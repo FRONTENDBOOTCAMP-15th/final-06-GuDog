@@ -22,7 +22,7 @@ jobs:
         with:
           source-directory: 'output'
           destination-github-username: moonhyukjin
-          destination-repository-name: final-06-GoDog-release
+          destination-repository-name: final-06-GuDog-release
           user-email: ${{ secrets.EMAIL_MHJ }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: main
