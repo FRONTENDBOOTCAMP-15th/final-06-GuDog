@@ -22,12 +22,12 @@ export default function Mypagelayout({ children }: Readonly<{ children: React.Re
 
       {/* {회색 영역} */}
       <div className="w-full h-361.25 bg-[#F9F9FB]">
-        <div className="flex flex-row justify-center gap-[14px]">
+        <div className="flex flex-row justify-center gap-[14px] pb-4 -translate-y-[28px]">
           {/* {회원 정보 수정 버튼} */}
           <button
             className="flex flex-col items-center 
-  w-[287.96px] h-[165.9px] 
-  pt-[26.56px] pr-[29.5px] pb-[30.145px] pl-[29.5px] 
+w-[287.96px] h-[165.9px] 
+pt-[26.56px] pr-[29.5px] pb-[30.145px] pl-[29.5px] 
   gap-[14.515px] shrink-0 
   rounded-[35px] border-2 border-[#FBA613] 
   bg-white 
@@ -138,10 +138,9 @@ export default function Mypagelayout({ children }: Readonly<{ children: React.Re
             </span>
           </button>
         </div>
+        {/* {개별 프롭스} */}
+        {children}
       </div>
-
-      {/* {개별 프롭스} */}
-      {children}
     </>
   );
 }
