@@ -1,4 +1,5 @@
 import OnetimeItemList from "@/app/(main)/cart/_components/onetime-item-list copy";
+import Button from "@/components/common/Button";
 import Image from "next/image";
 
 export default function OnetimeCart() {
@@ -6,7 +7,7 @@ export default function OnetimeCart() {
     <div className="flex flex-col xl:flex-row gap-9 justify-center">
       {/* 장바구니 목록 */}
       <div className="xl:w-2/3">
-        <section className="flex gap-3 bg-white border border-[#F9F9FB] rounded-[0.875rem] pl-7 pr-7 pt-4.5 pb-4.5 mb-5 shadow-(--shadow-card)">
+        <section className="flex gap-3 bg-white border border-[#F9F9FB] rounded-[0.875rem] px-3 py-3 sm:px-7 sm:py-7 mb-5 shadow-(--shadow-card)">
           <input type="checkbox" />
           <h2 className="text-[#1A1A1C] text-[0.75rem] font-black">전체 선택(2/2)</h2>
           <button className="ml-auto text-text-tertiary text-[0.625rem] font-bold">
@@ -15,7 +16,6 @@ export default function OnetimeCart() {
         </section>
 
         {/* 상품 목록 */}
-        <OnetimeItemList />
         <OnetimeItemList />
       </div>
 
@@ -38,9 +38,9 @@ export default function OnetimeCart() {
               <p className="text-2xl text-[#FBA613] font-black">59,000원</p>
             </div>
 
-            <button className="bg-[#FBA613] rounded-[0.875rem] py-4 px-5 text-white text-[0.75rem] font-bold shadow-(--shadow-glow)">
-              2개 상품 구매하기
-            </button>
+            {/* 구매하기 버튼 */}
+            <Button>2개 상품 구매하기</Button>
+
             <div className="flex items-center justify-center gap-2">
               <Image src="/images/cart/safe.svg" alt="" width={14} height={14} />
               <p className="text-center text-[0.75rem] text-text-tertiary font-black">
