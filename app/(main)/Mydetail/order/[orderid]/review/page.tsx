@@ -1,3 +1,5 @@
+"use client";
+
 import Contentdetail from "@/app/(main)/mypage/_components/Contentdetail";
 import { PlusIcon, PrevIcon } from "@/app/(main)/mypage/_components/Icons";
 import StarComponent from "@/app/(main)/mypage/_components/StarComponent";
@@ -5,8 +7,20 @@ import Badge from "@/components/common/Badge";
 import Button from "@/components/common/Button";
 import Input from "@/components/common/Input";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Review() {
+  const [preview, setPreview] = useState("/images/moomin.png");
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    if (file) {
+      const previewUrl = URL.createObjectURL(file);
+      setPreview(previewUrl);
+    }
+  };
+
   return (
     <>
       <div className="pt-[70px] pb-[112px] pl-[620px] pr-[620px] ">
@@ -40,18 +54,45 @@ export default function Review() {
           <Input className="w-[532px] pb-[35px]" label="" placeholder="제목을 입력해 주세요" />
 
           <Contentdetail />
-          <div className="flex flex-col items-start pt-[35px] rounded-[14px] border-2 border-dashed border-black/10  ">
-            <p className="text-[#1A1A1C] font-inter text-[11.5px] font-black leading-[17.5px]">
+
+          {/* {사진 업로드 기능} */}
+          <div className="flex flex-col  items-center mt-[35px]">
+            <p className="text-[#1A1A1C] font-inter text-[11.5px] font-black leading-[17.5px] pb-[14px]">
               사진 첨부
             </p>
-            <div className="w-[84px] h-[84px] flex flex-col justify-center items-center gap-1">
-              <PlusIcon className="w-[21px] h-[21px] text-[#909094] " />
-              <p className="text-[#909094] text-center font-inter text-[10px] font-black  uppercase">
-                추가
-              </p>
+            <div className="flex justify-start  w-[532px] gap-2">
+              <form
+                action="/https://fesp-api.koyeb.app/market"
+                method="post"
+                encType="multipart/form-data"
+              >
+                {/* {action "/" 는 파일이 전송될 서버의 주소 , method는 post 방식으로, enctype=~ 는 파일 데이터 전송을 위한 인코딩 방식, 필수이다. } */}
+                <img
+                  className="w-[84px] h-[84px]  border-2 rounded-[14px] border-[#909094]  shadow-2xl "
+                  src={preview}
+                  alt="프로필 이미지"
+                ></img>
+              </form>
+
+              {/* {id는 자스에서 요소 식별 id, name은 서버로 데이터를 보낼 때 사용할 이름, accept는 이미지 파일만 선택하도록 제한} */}
+              {/* <div className="w-[35px] h-[35px]  flex justify-center items-center mb-[50px]"> */}
+              <label className="" htmlFor="profileImageUpload"></label>
+              <input
+                className="w-[84px] h-[84px]  border-2 rounded-[14px] border-[#909094] border-dashed shadow-2xl text-transparent "
+                type="file"
+                id="profileImageUpload"
+                name="profileImageFile"
+                accept="image/*"
+                onChange={handleImageChange}
+              ></input>
+              <div className="">
+                <PlusIcon className="text-[#909094] w-[21px] pb-[3px]" />
+                <p className="text-[#909094] font-inter text-[11.5px] font-black">추가</p>
+              </div>
+              {/* </div> */}
             </div>
           </div>
-          <div>
+          <div className="pb-[50px]">
             <div className="flex flex-row gap-[14px] pt-[28px]">
               <Button className="w-[257px]" size="md" variant="primary">
                 후기 저장하기
