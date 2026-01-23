@@ -16,13 +16,23 @@ interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "classN
   label: string;
   hideLabel?: boolean;
   isError?: boolean;
+  errorMessage?: string;
   isSearch?: boolean;
   className?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
-    { label, hideLabel = false, isError = false, isSearch = false, className = "", id, ...props },
+    {
+      label,
+      hideLabel = false,
+      isError = false,
+      errorMessage,
+      isSearch = false,
+      className = "",
+      id,
+      ...props
+    },
     ref,
   ) => {
     const generatedId = useId();
@@ -58,6 +68,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
         </div>
+        {isError && errorMessage && (
+          <p className="text-xs font-bold text-red-500 ml-2 animate-in fade-in slide-in-from-top-1">
+            {errorMessage}
+          </p>
+        )}
       </div>
     );
   },
