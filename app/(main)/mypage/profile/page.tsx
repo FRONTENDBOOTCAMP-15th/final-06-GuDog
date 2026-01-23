@@ -1,3 +1,5 @@
+"use client";
+
 import Badge from "@/components/common/Badge";
 import Button from "@/components/common/Button";
 import {
@@ -27,19 +29,32 @@ export default function Profile() {
           서비스 이용을 위한 소중한 정보를 안전하게 관리하세요.
         </p>
 
-        <form className="mb-[161px] w-[672px] h-[779px] pl-[56px] pr-[56px] pt-[56px] pb-[70px] rounded-[49px] border border-black/[0.06] bg-[#FFF] shadow-[0_4px_24px_-4px_rgba(0,0,0,0.04),0_0_0_1px_rgba(0,0,0,0.02)]">
+        <div className="mb-[161px] w-[672px] h-[779px] pl-[56px] pr-[56px] pt-[56px] pb-[70px] rounded-[49px] border border-black/[0.06] bg-[#FFF] shadow-[0_4px_24px_-4px_rgba(0,0,0,0.04),0_0_0_1px_rgba(0,0,0,0.02)]">
           <div className="flex flex-col">
             <div className="flex flex-col  items-center">
-              <img
-                className="w-[97px] h-[97px] rounded-full ring-2 ring-white shadow-2xl"
-                src="/images/프로필.png"
-                alt="프로필 이미지"
-              ></img>
-
+              <form
+                action="/https://fesp-api.koyeb.app/market"
+                method="post"
+                encType="multipart/form-data"
+              >
+                {/* {action "/" 는 파일이 전송될 서버의 주소 , method는 post 방식으로, enctype=~ 는 파일 데이터 전송을 위한 인코딩 방식, 필수이다. } */}
+                <img
+                  className="w-[97px] h-[97px] rounded-full ring-2 ring-white shadow-2xl"
+                  src="/images/프로필.png"
+                  alt="프로필 이미지"
+                ></img>
+              </form>
+              {/* {id는 자스에서 요소 식별 id, name은 서버로 데이터를 보낼 때 사용할 이름, accept는 이미지 파일만 선택하도록 제한} */}
               <div className="w-[35px] h-[35px] -mr-15 -mt-8  bg-[#FBA613] flex justify-center items-center rounded-full ring-2 ring-white">
+                <input
+                  className="bg-amber-400 w-[35px] h-[35px] bg-[#FBA613] flex justify-center items-center rounded-full ring-2 ring-white text-transparent"
+                  type="file"
+                  id="profileImageUpload"
+                  name="profileImageFile"
+                  accept="image/*"
+                ></input>
                 <CameraIcon className="text-white " />
               </div>
-
               <p className="mb-[42px] pt-[14px] text-[#909094] text-[10.5px] font-[700] leading-[14px] tracking-[1.05px] uppercase">
                 프로필 사진 변경
               </p>
@@ -79,7 +94,7 @@ export default function Profile() {
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
     </>
   );

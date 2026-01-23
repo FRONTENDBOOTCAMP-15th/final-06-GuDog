@@ -26,7 +26,7 @@ export default function Review() {
             작성해주신 후기는 다른 견주님들께 큰 도움이 됩니다.
           </p>
         </div>
-        <div className="bg-white w-[632px] h-[886px] rounded-[35px] flex flex-col items-center">
+        <div className="bg-white w-[632px]  rounded-[35px] flex flex-col items-center">
           {/* {평점 있는 컨테이너} */}
           <div className="pb-[10px]">
             <StarComponent />

@@ -19,8 +19,8 @@ export default function Adjustdelivery() {
 
           {/* {활성화 된 버튼} */}
           <div className="relative">
-            <Input className="w-[415px]" label="" placeholder="2026-02-16"></Input>
-            <MiniCalendarIcon className="w-[14px] h-[14px] absolute top-0 right-[28px] translate-y-9.5" />
+            <Input type="date" className="w-[415px]" label="" placeholder="2026-02-16"></Input>
+            {/* <MiniCalendarIcon className="w-[14px] h-[14px] absolute top-0 right-[28px] translate-y-9.5" /> */}
           </div>
           <p className="text-[#909094] font-inter text-[10.3px] font-bold leading-[16.5px]">
             {" "}
