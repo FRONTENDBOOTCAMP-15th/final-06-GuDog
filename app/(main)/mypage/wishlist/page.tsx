@@ -3,6 +3,7 @@
 import { Product404 } from "@/app/(main)/mypage/_components/DogFoodImage";
 import { RigthMark } from "@/app/(main)/mypage/_components/Mark";
 import MyItemList from "@/app/(main)/mypage/_components/MyItemListA";
+import WishlistComponent from "@/app/(main)/mypage/_components/wishlist";
 
 export default async function Wishlist() {
   return (
@@ -21,38 +22,34 @@ export default async function Wishlist() {
         </div>
       </div>
 
-      <div className="flex flex-row gap-7 justify-center pt-[57px] pb-[110px]">
-        <MyItemList
+      <div className="flex flex-row gap-7 justify-center pt-[57px] pb-[50px]">
+        <WishlistComponent
           title="나인독 정밀 사료A"
           image={<Product404 />}
           href="/app/(main)/products/[productId]/page.tsx"
           content="상세 보기"
           price="45,800원"
-          mark={<RigthMark />}
         />
-        <MyItemList
+        <WishlistComponent
           title="나인독 정밀 사료A"
           image={<Product404 />}
           href="/app/(main)/products/[productId]/page.tsx"
           content="상세 보기"
           price="45,800원"
-          mark={<RigthMark />}
         />
-        <MyItemList
+        <WishlistComponent
           title="나인독 정밀 사료A"
           image={<Product404 />}
           href="/app/(main)/products/[productId]/page.tsx"
-          content="상세 보기"
+          content=""
           price="45,800원"
-          mark={<RigthMark />}
         />
-        <MyItemList
+        <WishlistComponent
           title="나인독 정밀 사료A"
           image={<Product404 />}
           href="/app/(main)/products/[productId]/page.tsx"
           content="상세 보기"
           price="45,800원"
-          mark={<RigthMark />}
         />
       </div>
     </>
