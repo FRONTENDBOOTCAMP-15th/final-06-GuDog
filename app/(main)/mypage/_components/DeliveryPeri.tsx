@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/common/Button";
+import Checkbox from "@/components/common/Checkbox";
 import { SubscriptIcon } from "lucide-react";
 
 export default function DeliveryPeri({}) {
@@ -16,11 +17,11 @@ export default function DeliveryPeri({}) {
 
         {/* {활성화 된 버튼} */}
         <Button
-          className="rounded-[25.2px] border-[2px] border-black/5 bg-white w-[415px] h-[80px]"
+          className="rounded-[25.2px] border-[2px] border-black/5 bg-white w-[415px] h-[80px] flex justify-between"
           size="lg"
           variant="ghost"
         >
-          <div className="flex flex-col items-start grow-1">
+          <div className="flex flex-col items-start grow-1 ">
             <p className="font-['Inter'] text-[11.7px] font-[900] leading-[17.5px] text-[#909094] ">
               격주 배송 (2주)
             </p>
@@ -28,11 +29,12 @@ export default function DeliveryPeri({}) {
               보편적인 식사량이에요
             </p>
           </div>
+          <Checkbox label="" />
         </Button>
 
         {/* {활성화 되지 않은 버튼} */}
         <Button
-          className="rounded-[25.2px] border-[2px] border-black/5 bg-white w-[415px] h-[80px]"
+          className="rounded-[25.2px] border-[2px] border-black/5 bg-white w-[415px] h-[80px] flex justify-between"
           size="lg"
           variant="ghost"
         >
@@ -44,6 +46,7 @@ export default function DeliveryPeri({}) {
               가장 많이 선택하시는 주기에요
             </p>
           </div>
+          <Checkbox label="" />
         </Button>
       </div>
     </>

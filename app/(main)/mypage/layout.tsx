@@ -37,13 +37,7 @@ export default function Mypagelayout({ children }: Readonly<{ children: React.Re
         <div className="flex flex-row justify-center gap-[14px] pb-4 relative z-20 -mt-[50px]">
           {/* {회원 정보 수정 버튼} */}
 
-          <MyTapButton
-            content="회원 정보"
-            href="profile"
-            icon={
-              <UserIcon className="w-16.25 h-16.25 bg-[#FFF9F2] flex justify-center items-center rounded-[14px]" />
-            }
-          />
+          <MyTapButton content="회원 정보" href="profile" icon={<UserIcon className="" />} />
 
           {/* <button
             className="flex flex-col items-center 
@@ -77,9 +71,7 @@ pt-[26.56px] pr-[29.5px] pb-[30.145px] pl-[29.5px]
           <MyTapButton
             content="정기 구독"
             href="subscription"
-            icon={
-              <SubscriptIcon className="w-16.25 h-16.25 bg-[#FFF9F2] flex justify-center items-center rounded-[14px]" />
-            }
+            icon={<SubscriptIcon className="" />}
           />
           {/* <button
             className="flex flex-col items-center 
@@ -113,9 +105,7 @@ pt-[26.56px] pr-[29.5px] pb-[30.145px] pl-[29.5px]
           <MyTapButton
             content="주문 내역"
             href="/Mydetail/order"
-            icon={
-              <PurchaseIcon className="w-16.25 h-16.25 bg-[#FFF9F2] flex justify-center items-center rounded-[14px]" />
-            }
+            icon={<PurchaseIcon className=" " />}
           />
           {/* <button
             className="flex flex-col items-center 
@@ -172,13 +162,7 @@ pt-[26.56px] pr-[29.5px] pb-[30.145px] pl-[29.5px]
               관심 상품
             </span>
           </button> */}
-          <MyTapButton
-            content="관심 상품"
-            href="wishlist"
-            icon={
-              <HeartIcon className="w-16.25 h-16.25 bg-[#FFF9F2] flex justify-center items-center rounded-[14px]" />
-            }
-          />
+          <MyTapButton content="관심 상품" href="wishlist" icon={<HeartIcon className="" />} />
         </div>
         {/* {개별 프롭스} */}
         {children}

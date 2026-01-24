@@ -5,6 +5,7 @@ import { Product404 } from "@/app/(main)/mypage/_components/DogFoodImage";
 import { PrevIcon } from "@/app/(main)/mypage/_components/Icons";
 import Badge from "@/components/common/Badge";
 import Button from "@/components/common/Button";
+import Checkbox from "@/components/common/Checkbox";
 import Link from "next/link";
 
 export default function SubscriptionEdit() {
