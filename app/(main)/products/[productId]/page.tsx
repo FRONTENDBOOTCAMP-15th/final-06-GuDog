@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Product() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   // 처음 화면에서는 닫혀 있으니까 기본 false
   const [purchaseType, setPurchaseType] = useState<"oneTime" | "subscribe">("oneTime");
@@ -548,14 +550,14 @@ export default function Product() {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:gap-4">
               <button
                 type="button"
-                onClick={() => setIsOpen(false)}
+                onClick={() => router.push("/cart")}
                 className="flex-1 w-[35rem] border border-black rounded bg-white py-2"
               >
                 장바구니 담기
               </button>
               <button
                 type="button"
-                onClick={() => setIsOpen(false)}
+                onClick={() => router.push("/checkout")}
                 className="flex-1 w-[35rem] rounded bg-gray-200 py-2"
               >
                 바로 구매하기
