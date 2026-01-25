@@ -536,7 +536,10 @@ export default function Product() {
             <div className="h-px bg-gray-200" />
 
             <div className="flex justify-between">
-              <p className="font-semibold text-m">총 결제금액</p>
+              <div className="flex justify-center items-center gap-2">
+                <p className="font-semibold text-m">총 결제금액</p>
+                {purchaseType === "subscribe" && <p className="text-sm">무료배송</p>}
+              </div>
               <div className="flex items-center gap-2">
                 {purchaseType === "subscribe" && (
                   <span className="text-sm text-gray-400 line-through">
