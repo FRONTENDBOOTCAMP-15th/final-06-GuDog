@@ -16,24 +16,18 @@ export default function SubscriptionItemList() {
           <p className="text-text-tertiary text-[0.75rem] font-bold">5kg</p>
           <p className="text-[0.625rem] text-(--color-text-primary) font-bold">배송 주기 선택</p>
           <div className="flex felx-col gap-0.5 sm:gap-1.5">
-            <button className="text-[0.5rem] sm:text-xs text-text-tertiary font-bold border rounded-xl border-border-primary px-1 py-1 sm:px-8 sm:py-1.5">
-              격주 배송(2주)
-            </button>
-            <button className="text-[0.5rem] sm:text-xs text-accent-primary font-bold border rounded-xl border-accent-primary bg-accent-soft px-1 py-1 sm:px-8 sm:py-1.5">
-              매월 배송(4주)
-            </button>
-            {/* <Button
+            <Button
               variant="outline"
-              className="text-[0.5rem] sm:text-xs text-text-tertiary font-bold border rounded-xl border-border-primary px-1 py-1 sm:px-8 sm:py-1.5"
+              className="!text-[0.5rem] !sm:text-xs text-text-tertiary font-bold border rounded-xl border-border-primary !px-1 !py-1 !sm:px-8 !sm:py-1.5"
             >
               격주 배송(2주)
             </Button>
             <Button
               variant="secondary"
-              className="text-[0.5rem] sm:text-xs text-accent-primary font-bold border rounded-xl border-accent-primary bg-accent-soft px-1 py-1 sm:px-8 sm:py-1.5"
+              className="!text-[0.5rem] !sm:text-xs text-accent-primary font-bold border rounded-xl border-accent-primary bg-accent-soft !px-1 !py-1 !sm:px-8 !sm:py-1.5"
             >
               미월 배송(4주)
-            </Button> */}
+            </Button>
           </div>
           {/* 수량 조절 버튼 */}
           <QuantityControl />
