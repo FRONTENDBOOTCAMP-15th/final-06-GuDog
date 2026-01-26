@@ -10,7 +10,7 @@ export default function Cart() {
 
   return (
     <div className="bg-[#F9F9FB] ">
-      <div className="xl:max-w-300 min-w-90 mx-auto px-4 py-8">
+      <div className="xl:max-w-300 min-w-90 mx-auto px-4 pt-8 pb-[8.75rem]">
         {/* 헤더 */}
         <section className="text-center mb-16 mt-10">
           <Badge variant="accent" className="mb-3.5">

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function OnetimeItemList() {
   return (
-    <section className="flex flex-col mb-5 gap-3.5">
+    <section className="flex flex-col gap-3.5">
       <div className="flex items-center gap-2 sm:gap-5 border border-[#F9F9FB] rounded-[0.875rem] px-3 py-3 sm:px-7 sm:py-7 bg-white shadow-(--shadow-card)">
         <input type="checkbox" />
         <div className="w-20 h-20 sm:w-24 shrink-0">
