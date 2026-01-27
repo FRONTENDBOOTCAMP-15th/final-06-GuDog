@@ -159,19 +159,37 @@
         "nutrition": { "protein": 32, "fat": 18, "moisture": 10 }
       }
     },
+
     {
+      "pagination": {
+        "page": 1,
+        "limit": 8,
+        "total": 1,
+        "totalPages": 1
+      },
+      "_id": "2",
       "price": 47000,
       "quantity": 89,
+      "seller_id": 1,
+      "buyQuantity": 89,
+      "shippingFees": 0,
+      "quantityInStock": 89,
+      "show": true,
+      "active": true,
       "name": "미디엄퍼피 치킨앤오트밀",
       "content": "중형견의 성장 속도에 맞춰 칼슘과 인의 균형을 최적화하여 뼈와 관절이 건강하게 발달하도록 설계되었습니다. 오트밀은 소화가 부드럽고 식이섬유가 풍부하여 성장기 강아지의 민감한 장 건강을 보호합니다.",
       "mainImages": [
         {
-          "path": "/images/medium_puppy_chicken_oatmeal.png",
+          "path": "/images/medium_puppy_chicken_oatmeal.jpg.png",
           "name": "medium_puppy_chicken_oatmeal.jpg"
         }
       ],
       "extra": {
+        "state": ["1회구매", "구독중"],
+        "orderdate": "2026-01-27",
+        "period": "2주 배송",
         "code": "PUP-M-01",
+        "discount": "4500",
         "weight": 1000,
         "size": ["중형견"],
         "lifeStage": ["퍼피"],
@@ -180,6 +198,8 @@
         "neutered": "both",
         "mainProtein": ["닭고기"],
         "grainFree": false,
+        "category": ["퍼피", "주니어", "시니어"],
+        "feedstuff": true,
         "foodType": "건식",
         "healthBenefits": ["소화/장 건강"],
         "kcalPer100g": 390,
@@ -195,19 +215,37 @@
         "nutrition": { "protein": 30, "fat": 17, "moisture": 10 }
       }
     },
+
     {
+      "pagination": {
+        "page": 1,
+        "limit": 8,
+        "total": 1,
+        "totalPages": 1
+      },
+      "_id": "3",
       "price": 52000,
       "quantity": 43,
+      "seller_id": 1,
+      "buyQuantity": 43,
+      "shippingFees": 0,
+      "quantityInStock": 43,
+      "show": true,
+      "active": true,
       "name": "라지퍼피 치킨앤브라운라이스",
       "content": "글루코사민과 콘드로이틴이 함유되어 대형견 특유의 빠른 체중 증가로 인한 관절 부담을 줄이고, 어린 시절부터 튼튼한 관절 기반을 형성합니다. 대형견 퍼피에게 적합한 380kcal의 적정 칼로리 설계로 급격한 성장을 방지합니다.",
       "mainImages": [
         {
-          "path": "/images/large_puppy_chicken_brownrice.png",
+          "path": "/images/large_puppy_chicken_brownrice.jpg",
           "name": "large_puppy_chicken_brownrice.jpg"
         }
       ],
       "extra": {
+        "state": ["1회구매", "구독중"],
+        "orderdate": "2026-01-27",
+        "period": "2주 배송",
         "code": "PUP-L-01",
+        "discount": "4500",
         "weight": 1500,
         "size": ["대형견"],
         "lifeStage": ["퍼피"],
@@ -216,9 +254,11 @@
         "neutered": "both",
         "mainProtein": ["닭고기"],
         "grainFree": false,
+        "category": ["퍼피", "주니어", "시니어"],
+        "feedstuff": true,
         "foodType": "건식",
         "healthBenefits": ["관절/뼈 건강"],
-        "kcalPer100g": 380,
+        "kcalPer100g": 400,
         "ingredients": {
           "contains": ["닭고기", "현미"],
           "avoid": []
@@ -231,19 +271,37 @@
         "nutrition": { "protein": 28, "fat": 14, "moisture": 10 }
       }
     },
+
     {
+      "pagination": {
+        "page": 1,
+        "limit": 8,
+        "total": 1,
+        "totalPages": 1
+      },
+      "_id": "4",
       "price": 55000,
       "quantity": 62,
+      "seller_id": 1,
+      "buyQuantity": 62,
+      "shippingFees": 0,
+      "quantityInStock": 62,
+      "show": true,
+      "active": true,
       "name": "퍼피 연어앤고구마 그레인프리",
       "content": "오메가-3 지방산이 풍부한 연어를 주원료로 사용하여 성장기 강아지의 피부 장벽을 강화하고 윤기 있는 모질 발달을 촉진합니다. 곡물을 완전히 배제한 그레인프리 설계로 곡물에 민감한 어린 강아지의 소화기를 보호합니다.",
       "mainImages": [
         {
-          "path": "/images/puppy_gf_salmon_sweetpotato.png",
+          "path": "/images/puppy_gf_salmon_sweetpotato.jpg",
           "name": "puppy_gf_salmon_sweetpotato.jpg"
         }
       ],
       "extra": {
+        "state": ["1회구매", "구독중"],
+        "orderdate": "2026-01-27",
+        "period": "2주 배송",
         "code": "PUP-GF-01",
+        "discount": "4500",
         "weight": 1000,
         "size": ["소형견", "중형견", "대형견"],
         "lifeStage": ["퍼피"],
@@ -251,7 +309,9 @@
         "activityLevel": ["보통", "많음"],
         "neutered": "both",
         "mainProtein": ["연어"],
-        "grainFree": true,
+        "grainFree": false,
+        "category": ["퍼피", "주니어", "시니어"],
+        "feedstuff": true,
         "foodType": "건식",
         "healthBenefits": ["피부/모질"],
         "kcalPer100g": 395,
@@ -267,91 +327,228 @@
         "nutrition": { "protein": 30, "fat": 16, "moisture": 10 }
       }
     },
+
     {
+      "pagination": {
+        "page": 1,
+        "limit": 8,
+        "total": 1,
+        "totalPages": 1
+      },
+      "_id": "5",
+      "price": 43000,
+      "quantity": 156,
       "seller_id": 1,
-      "price": 45000,
+      "buyQuantity": 156,
+      "shippingFees": 0,
+      "quantityInStock": 156,
       "show": true,
       "active": true,
-      "name": "스몰퍼피 치킨앤라이스",
-      "quantity": 127,
+      "name": "스몰어덜트 치킨앤라이스",
+      "content": "소형견의 작은 입에 맞춘 미니 사이즈 알갱이로 설계되어 씹기 편하고, 한 번에 적정량을 섭취할 수 있어 과식을 방지합니다. 소형견은 체중 대비 높은 대사율을 가지고 있어 고단백·고칼로리 설계로 에너지 요구량을 충족시킵니다.",
       "mainImages": [
         {
-          "path": "uploadFiles/sample-dog.jpg",
-          "name": "sample-dog.jpg"
+          "path": "/images/small_adult_chicken_rice.jpg",
+          "name": "small_adult_chicken_rice.jpg"
         }
       ],
-      "content": "DHA와 EPA가 풍부하게 함유되어 성장기 강아지의 두뇌 발달과 시력 형성을 촉진하며, 학습 능력 향상에도 도움을 줍니다. 칼슘과 인이 1.2:1의 최적 비율로 설계되어 소형견 특유의 빠른 골격 성장을 안정적으로 지원합니다.",
       "extra": {
-        "isNew": true,
-        "isBest": true,
-        "category": ["PC03", "PC0301"],
-        "sort": 5
+        "state": ["1회구매", "구독중"],
+        "orderdate": "2026-01-27",
+        "period": "2주 배송",
+        "code": "ADT-S-01",
+        "discount": "4500",
+        "weight": 600,
+        "size": ["소형견"],
+        "lifeStage": ["성견"],
+        "bodyType": ["적정"],
+        "activityLevel": ["보통", "많음"],
+        "neutered": "both",
+        "mainProtein": ["닭고기"],
+        "grainFree": false,
+        "category": ["퍼피", "주니어", "시니어"],
+        "feedstuff": true,
+        "foodType": "건식",
+        "healthBenefits": [],
+        "kcalPer100g": 370,
+        "ingredients": {
+          "contains": ["닭고기", "쌀"],
+          "avoid": []
+        },
+        "avoidIf": {
+          "allergies": ["닭고기", "밀/곡물"],
+          "diseases": []
+        },
+        "specialFeatures": ["소형견 키볼"],
+        "nutrition": { "protein": 28, "fat": 16, "moisture": 10 }
       }
     },
+
     {
+      "pagination": {
+        "page": 1,
+        "limit": 8,
+        "total": 1,
+        "totalPages": 1
+      },
+      "_id": "6",
+      "price": 44000,
+      "quantity": 97,
       "seller_id": 1,
-      "price": 47000,
+      "buyQuantity": 97,
+      "shippingFees": 0,
+      "quantityInStock": 97,
       "show": true,
       "active": true,
-      "name": "미디엄퍼피 치킨앤오트밀",
-      "quantity": 89,
-      "buyQuantity": 198,
+      "name": "스몰어덜트 오리앤귀리",
+      "content": "오리고기는 닭고기와 다른 단백질 구조를 가지고 있어 닭고기 알러지가 있는 소형견에게 훌륭한 대체 단백질원이 됩니다. 귀리는 수용성 식이섬유인 베타글루칸이 풍부하여 장 건강을 개선하고 혈당을 안정적으로 유지합니다.",
       "mainImages": [
         {
-          "path": "uploadFiles/sample-diver.jpg",
-          "name": "sample-diver.jpg"
+          "path": "/images/small_adult_duck_oat.jpg",
+          "name": "small_adult_duck_oat.jpg"
         }
       ],
-      "content": "중형견의 성장 속도에 맞춰 칼슘과 인의 균형을 최적화하여 뼈와 관절이 건강하게 발달하도록 설계되었습니다. 오트밀은 소화가 부드럽고 식이섬유가 풍부하여 성장기 강아지의 민감한 장 건강을 보호합니다.",
       "extra": {
-        "isNew": false,
-        "isBest": true,
-        "category": ["PC01", "PC0103"],
-        "sort": 4
+        "state": ["1회구매", "구독중"],
+        "orderdate": "2026-01-27",
+        "period": "2주 배송",
+        "code": "ADT-S-02",
+        "discount": "4500",
+        "weight": 600,
+        "size": ["소형견"],
+        "lifeStage": ["성견"],
+        "bodyType": ["적정"],
+        "activityLevel": ["보통"],
+        "neutered": "both",
+        "mainProtein": ["오리고기"],
+        "grainFree": false,
+        "category": ["퍼피", "주니어", "시니어"],
+        "feedstuff": true,
+        "foodType": "건식",
+        "healthBenefits": ["소화/장 건강"],
+        "kcalPer100g": 365,
+        "ingredients": {
+          "contains": ["오리고기", "귀리"],
+          "avoid": []
+        },
+        "avoidIf": {
+          "allergies": ["밀/곡물"],
+          "diseases": []
+        },
+        "specialFeatures": ["소형견 키볼", "저자극성"],
+        "nutrition": { "protein": 27, "fat": 15, "moisture": 10 }
       }
     },
+
     {
+      "pagination": {
+        "page": 1,
+        "limit": 8,
+        "total": 1,
+        "totalPages": 1
+      },
+      "_id": "7",
+      "price": 46000,
+      "quantity": 78,
       "seller_id": 1,
-      "price": 52000,
+      "buyQuantity": 78,
+      "shippingFees": 0,
+      "quantityInStock": 78,
       "show": true,
       "active": true,
-      "name": "라지퍼피 치킨앤브라운라이스",
-      "quantity": 43,
-      "buyQuantity": 99,
+      "name": "미디엄어덜트 치킨앤보리",
+      "content": "중형견의 체중과 활동량에 최적화된 영양 밸런스로 설계되어 과체중이나 영양 부족 없이 이상적인 체형을 유지할 수 있습니다. 보리는 저혈당 지수 탄수화물로 에너지를 천천히 방출하여 활동적인 중형견이 하루 종일 안정적인 에너지를 유지합니다.",
       "mainImages": [
         {
-          "path": "uploadFiles/sample-classic.jpg",
-          "name": "sample-classic.jpg"
+          "path": "/images/medium_adult_chicken_barley.jpg",
+          "name": "medium_adult_chicken_barley.jpg"
         }
       ],
-      "content": "<div class=\"product-detail\"><p>레고 클래식 라지 조립 박스 10698 상세 설명</p></div>",
       "extra": {
-        "isNew": true,
-        "isBest": true,
-        "category": ["PC01", "PC0103"],
-        "sort": 3
+        "state": ["1회구매", "구독중"],
+        "orderdate": "2026-01-27",
+        "period": "2주 배송",
+        "code": "ADT-S-02",
+        "discount": "4500",
+        "weight": 600,
+        "size": ["중형견"],
+        "lifeStage": ["성견"],
+        "bodyType": ["적정"],
+        "activityLevel": ["보통", "많음"],
+        "neutered": "both",
+        "mainProtein": ["오리고기"],
+        "grainFree": false,
+        "category": ["퍼피", "주니어", "시니어"],
+        "feedstuff": true,
+        "foodType": "건식",
+        "healthBenefits": ["소화/장 건강"],
+        "kcalPer100g": 365,
+        "ingredients": {
+          "contains": ["오리고기", "귀리"],
+          "avoid": []
+        },
+        "avoidIf": {
+          "allergies": ["밀/곡물"],
+          "diseases": []
+        },
+        "specialFeatures": ["소형견 키볼", "저자극성"],
+        "nutrition": { "protein": 27, "fat": 15, "moisture": 10 }
       }
     },
+
     {
+      "pagination": {
+        "page": 1,
+        "limit": 8,
+        "total": 1,
+        "totalPages": 1
+      },
+      "_id": "8",
+      "price": 50000,
+      "quantity": 36,
       "seller_id": 1,
-      "price": 55000,
+      "buyQuantity": 36,
+      "shippingFees": 0,
+      "quantityInStock": 36,
       "show": true,
       "active": true,
-      "name": "퍼피 연어앤고구마 그레인프리",
-      "quantity": 62,
-      "buyQuantity": 89,
+      "name": "라지어덜트 치킨앤현미",
+      "content": "글루코사민 800mg과 콘드로이틴 400mg이 함유되어 대형견의 무거운 체중을 지탱하는 관절과 연골 건강을 적극적으로 보호합니다. 대형견에게 적합한 350kcal의 적정 칼로리로 설계되어 과체중을 예방하고 관절에 가해지는 부담을 최소화합니다.",
       "mainImages": [
         {
-          "path": "uploadFiles/sample-bugatti.png",
-          "name": "sample-bugatti.png"
+          "path": "/images/large_adult_chicken_brownrice.jpg",
+          "name": "large_adult_chicken_brownrice.jpg"
         }
       ],
-      "content": "<div class=\"product-detail\"><p>레고 테크닉 42151 부가티 볼리드 상세 설명</p></div>",
       "extra": {
-        "isNew": false,
-        "isBest": true,
-        "category": ["PC03", "PC0303"],
-        "sort": 1
+        "state": ["1회구매", "구독중"],
+        "orderdate": "2026-01-27",
+        "period": "2주 배송",
+        "code": "ADT-L-01",
+        "discount": "4500",
+        "weight": 1500,
+        "size": ["대형견"],
+        "lifeStage": ["성견"],
+        "bodyType": ["적정"],
+        "activityLevel": ["보통", "많음"],
+        "neutered": "both",
+        "mainProtein": ["닭"],
+        "grainFree": false,
+        "category": ["퍼피", "주니어", "시니어"],
+        "feedstuff": true,
+        "foodType": "건식",
+        "healthBenefits": ["관절/뼈 건강"],
+        "kcalPer100g": 350,
+        "ingredients": {
+          "contains": ["닭고기", "현미"],
+          "avoid": []
+        },
+        "avoidIf": {
+          "allergies": ["닭고기", "밀/곡물"],
+          "diseases": []
+        },
+        "specialFeatures": ["관절 영양 강화"],
+        "nutrition": { "protein": 25, "fat": 12, "moisture": 10 }
       }
     },
     {
