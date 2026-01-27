@@ -108,13 +108,153 @@
   ],
   "product": [
     {
+      "price": 45000,
+      "quantity": 127,
+      "name": "스몰퍼피 치킨앤라이스",
+      "content": "DHA와 EPA가 풍부하게 함유되어 성장기 강아지의 두뇌 발달과 시력 형성을 촉진하며, 학습 능력 향상에도 도움을 줍니다. 칼슘과 인이 1.2:1의 최적 비율로 설계되어 소형견 특유의 빠른 골격 성장을 안정적으로 지원합니다.",
+      "mainImages": [
+        { "path": "/images/small_puppy_chicken_rice.png", "name": "small_puppy_chicken_rice.jpg" }
+      ],
+      "extra": {
+        "code": "PUP-S-01",
+        "weight": 600,
+        "size": ["소형견"],
+        "lifeStage": ["퍼피"],
+        "bodyType": ["마름", "적정"],
+        "activityLevel": ["보통", "많음"],
+        "neutered": "both",
+        "mainProtein": ["닭고기"],
+        "grainFree": false,
+        "foodType": "건식",
+        "healthBenefits": [],
+        "kcalPer100g": 400,
+        "ingredients": {
+          "contains": ["닭고기", "쌀"],
+          "avoid": []
+        },
+        "avoidIf": {
+          "allergies": ["닭고기", "밀/곡물"],
+          "diseases": []
+        },
+        "specialFeatures": ["퍼피 전용", "소형견 키블", "DHA 함유"],
+        "nutrition": { "protein": 32, "fat": 18, "moisture": 10 }
+      }
+    },
+    {
+      "price": 47000,
+      "quantity": 89,
+      "name": "미디엄퍼피 치킨앤오트밀",
+      "content": "중형견의 성장 속도에 맞춰 칼슘과 인의 균형을 최적화하여 뼈와 관절이 건강하게 발달하도록 설계되었습니다. 오트밀은 소화가 부드럽고 식이섬유가 풍부하여 성장기 강아지의 민감한 장 건강을 보호합니다.",
+      "mainImages": [
+        {
+          "path": "/images/medium_puppy_chicken_oatmeal.png",
+          "name": "medium_puppy_chicken_oatmeal.jpg"
+        }
+      ],
+      "extra": {
+        "code": "PUP-M-01",
+        "weight": 1000,
+        "size": ["중형견"],
+        "lifeStage": ["퍼피"],
+        "bodyType": ["마름", "적정"],
+        "activityLevel": ["보통", "많음"],
+        "neutered": "both",
+        "mainProtein": ["닭고기"],
+        "grainFree": false,
+        "foodType": "건식",
+        "healthBenefits": ["소화/장 건강"],
+        "kcalPer100g": 390,
+        "ingredients": {
+          "contains": ["닭고기", "귀리"],
+          "avoid": []
+        },
+        "avoidIf": {
+          "allergies": ["닭고기", "밀/곡물"],
+          "diseases": []
+        },
+        "specialFeatures": ["퍼피 전용"],
+        "nutrition": { "protein": 30, "fat": 17, "moisture": 10 }
+      }
+    },
+    {
+      "price": 52000,
+      "quantity": 43,
+      "name": "라지퍼피 치킨앤브라운라이스",
+      "content": "글루코사민과 콘드로이틴이 함유되어 대형견 특유의 빠른 체중 증가로 인한 관절 부담을 줄이고, 어린 시절부터 튼튼한 관절 기반을 형성합니다. 대형견 퍼피에게 적합한 380kcal의 적정 칼로리 설계로 급격한 성장을 방지합니다.",
+      "mainImages": [
+        {
+          "path": "/images/large_puppy_chicken_brownrice.png",
+          "name": "large_puppy_chicken_brownrice.jpg"
+        }
+      ],
+      "extra": {
+        "code": "PUP-L-01",
+        "weight": 1500,
+        "size": ["대형견"],
+        "lifeStage": ["퍼피"],
+        "bodyType": ["마름", "적정"],
+        "activityLevel": ["보통", "많음"],
+        "neutered": "both",
+        "mainProtein": ["닭고기"],
+        "grainFree": false,
+        "foodType": "건식",
+        "healthBenefits": ["관절/뼈 건강"],
+        "kcalPer100g": 380,
+        "ingredients": {
+          "contains": ["닭고기", "현미"],
+          "avoid": []
+        },
+        "avoidIf": {
+          "allergies": ["닭고기", "밀/곡물"],
+          "diseases": []
+        },
+        "specialFeatures": ["퍼피 전용", "관절 영양 강화"],
+        "nutrition": { "protein": 28, "fat": 14, "moisture": 10 }
+      }
+    },
+    {
+      "price": 55000,
+      "quantity": 62,
+      "name": "퍼피 연어앤고구마 그레인프리",
+      "content": "오메가-3 지방산이 풍부한 연어를 주원료로 사용하여 성장기 강아지의 피부 장벽을 강화하고 윤기 있는 모질 발달을 촉진합니다. 곡물을 완전히 배제한 그레인프리 설계로 곡물에 민감한 어린 강아지의 소화기를 보호합니다.",
+      "mainImages": [
+        {
+          "path": "/images/puppy_gf_salmon_sweetpotato.png",
+          "name": "puppy_gf_salmon_sweetpotato.jpg"
+        }
+      ],
+      "extra": {
+        "code": "PUP-GF-01",
+        "weight": 1000,
+        "size": ["소형견", "중형견", "대형견"],
+        "lifeStage": ["퍼피"],
+        "bodyType": ["마름", "적정"],
+        "activityLevel": ["보통", "많음"],
+        "neutered": "both",
+        "mainProtein": ["연어"],
+        "grainFree": true,
+        "foodType": "건식",
+        "healthBenefits": ["피부/모질"],
+        "kcalPer100g": 395,
+        "ingredients": {
+          "contains": ["연어", "고구마", "연어오일"],
+          "avoid": ["밀", "옥수수", "쌀", "곡물 전체"]
+        },
+        "avoidIf": {
+          "allergies": ["생선"],
+          "diseases": []
+        },
+        "specialFeatures": ["퍼피 전용", "그레인프리", "오메가3 풍부", "저자극성"],
+        "nutrition": { "protein": 30, "fat": 16, "moisture": 10 }
+      }
+    },
+    {
       "seller_id": 1,
       "price": 45000,
       "show": true,
       "active": true,
       "name": "스몰퍼피 치킨앤라이스",
       "quantity": 127,
-      "buyQuantity": 310,
       "mainImages": [
         {
           "path": "uploadFiles/sample-dog.jpg",
