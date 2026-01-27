@@ -403,15 +403,15 @@ export default function Product() {
       {/* 구매 모달창 */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-end justify-center bg-black/50"
+          className="fixed flex-wrap inset-0 z-500 flex items-end justify-center bg-black/50 overflow-y-auto"
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="flex flex-col w-[73rem] h-[85vh] rounded-4xl bg-white px-20 py-10 shadow-xl"
+            className="flex flex-col w-[73rem] rounded-t-4xl bg-white px-20 py-10 shadow-xl  "
             onClick={(e) => e.stopPropagation()}
           >
             {/* 스크롤 가능한 콘텐츠 영역 */}
-            <div className="flex-1 overflow-y-auto flex flex-col gap-10">
+            <div className="flex-1 flex flex-col gap-10">
               {/* 닫기 막대 */}
               <div
                 className="flex justify-center pb-7 cursor-pointer"
