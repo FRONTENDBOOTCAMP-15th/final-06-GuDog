@@ -1,108 +1,45 @@
 {
   "user": [
     {
-      "email": "admin@market.com",
+      "email": "hello@9Dog.co.kr",
       "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
-      "name": "무지",
-      "phone": "01011112222",
-      "address": "서울시 강남구 역삼동 123",
-      "type": "admin",
-      "loginType": "email",
-      "image": "uploadFiles/user-muzi.png",
-      "extra": {
-        "birthday": "03-23",
-        "membershipClass": "MC03",
-        "addressBook": [
-          {
-            "id": 1,
-            "name": "집",
-            "value": "서울시 강남구 역삼동 123"
-          },
-          {
-            "id": 2,
-            "name": "회사",
-            "value": "서울시 강남구 신사동 234"
-          }
-        ]
-      }
-    },
-    {
-      "email": "s1@market.com",
-      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
-      "name": "네오",
-      "phone": "01022223333",
-      "address": "서울시 강남구 삼성동 456",
-      "type": "seller",
-      "loginType": "email",
-      "image": "uploadFiles/user-neo.png",
-      "extra": {
-        "birthday": "11-23",
-        "membershipClass": "MC01",
-        "addressBook": [
-          {
-            "id": 1,
-            "name": "회사",
-            "value": "서울시 강남구 삼성동 567"
-          },
-          {
-            "id": 2,
-            "name": "학교",
-            "value": "서울시 강남구 역삼동 234"
-          }
-        ]
-      }
-    },
-    {
-      "email": "s2@market.com",
-      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
-      "name": "어피치",
-      "phone": "01033334444",
-      "address": "서울시 강남구 도곡동 789",
-      "type": "seller",
-      "loginType": "email",
-      "image": "uploadFiles/user-apeach.png",
-      "extra": {
-        "adminConfirm": false,
-        "birthday": "11-24",
-        "membershipClass": "MC02",
-        "addressBook": [
-          {
-            "id": 1,
-            "name": "회사",
-            "value": "서울시 마포구 연희동 123"
-          },
-          {
-            "id": 2,
-            "name": "가게",
-            "value": "서울시 강남구 학동 234"
-          }
-        ]
-      }
-    },
-    {
-      "email": "u1@market.com",
-      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
-      "name": "제이지",
-      "phone": "01044445555",
-      "address": "서울시 강남구 논현동 222",
+      "name": "hello@9Dog.co.kr",
+      "phone": "01012345678",
+      "address": "서울특별시 종로구 종로3길 17",
       "type": "user",
       "loginType": "email",
-      "image": "uploadFiles/user-jayg.webp",
+      "image": "/images/moomin.png",
       "extra": {
-        "birthday": "11-30",
-        "membershipClass": "MC02",
-        "address": [
-          {
-            "id": 1,
-            "name": "회사",
-            "value": "서울시 강동구 천호동 123"
-          },
-          {
-            "id": 2,
-            "name": "집",
-            "value": "서울시 강동구 성내동 234"
-          }
-        ]
+        "zipcode": "03155",
+        "detailaddress": "D타워 D1동 16, 17층"
+      }
+    },
+    {
+      "email": "bye@9Dog.co.kr",
+      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
+      "name": "bye@9Dog.co.kr",
+      "phone": "01012341234",
+      "address": "서울특별시 종로구 종로6길 19",
+      "type": "seller",
+      "loginType": "email",
+      "image": "/images/angrymoomin.png",
+      "extra": {
+        "zipcode": "03154",
+        "detailaddress": "A타워 3동 20, 7층"
+      }
+    },
+    {
+      "email": "happy@9Dog.co.kr",
+      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
+      "name": "happy@9Dog.co.kr",
+      "phone": "01056785678",
+      "address": "부산광역시 해운대구 센텀동로 57",
+      "type": "user",
+      "loginType": "email",
+      "image": "/images/brighteyesbillain.png",
+      "extra": {
+        "zipcode": "48059",
+        "detailaddress": "해운대구 우동 1457 빨간 지붕"
       }
     }
   ],
