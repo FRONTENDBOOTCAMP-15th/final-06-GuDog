@@ -108,15 +108,26 @@
   ],
   "product": [
     {
+      "_id": "1",
       "price": 45000,
       "quantity": 127,
+      "seller_id": 2,
+      "buyQuantity": 127,
+      "shippingFees": 3000,
+      "quantityInStock": 127,
+      "show": true,
+      "active": true,
       "name": "스몰퍼피 치킨앤라이스",
       "content": "DHA와 EPA가 풍부하게 함유되어 성장기 강아지의 두뇌 발달과 시력 형성을 촉진하며, 학습 능력 향상에도 도움을 줍니다. 칼슘과 인이 1.2:1의 최적 비율로 설계되어 소형견 특유의 빠른 골격 성장을 안정적으로 지원합니다.",
       "mainImages": [
         { "path": "/images/small_puppy_chicken_rice.png", "name": "small_puppy_chicken_rice.jpg" }
       ],
       "extra": {
+        "state": ["1회구매", "구독중"],
+        "orderdate": "2026-01-27",
+        "period": "2주 배송",
         "code": "PUP-S-01",
+        "discount": "4500",
         "weight": 600,
         "size": ["소형견"],
         "lifeStage": ["퍼피"],
@@ -125,6 +136,8 @@
         "neutered": "both",
         "mainProtein": ["닭고기"],
         "grainFree": false,
+        "category": ["퍼피", "주니어", "시니어"],
+        "feedstuff": true,
         "foodType": "건식",
         "healthBenefits": [],
         "kcalPer100g": 400,
@@ -807,13 +820,19 @@
       "user_id": 4,
       "user": {
         "_id": 4,
-        "name": "제이지",
-        "image": "uploadFiles/user-jayg.webp"
+        "name": "hello@9Dog.co.kr",
+        "image": "/images/smallAdultChiken.png"
       },
       "order_id": 1,
       "product_id": 2,
       "rating": 5,
-      "content": "아이가 좋아해요."
+      "content": "우리 애가 너무 잘 먹어요!.",
+      "extra": {
+        "createdAt": "2026-01-27",
+        "likeCount": "7",
+        "price": "45000",
+        "reviewId": "1"
+      }
     },
     {
       "user_id": 2,
@@ -874,7 +893,12 @@
         "image": "uploadFiles/user-jayg.webp"
       },
       "type": "product",
+      "is_like": "true",
       "target_id": 2,
+      "extra": {
+        "product_id": "1",
+        "post_id": "1"
+      },
       "memo": "첫째 크리스마스 선물."
     },
     {
@@ -926,15 +950,22 @@
     {
       "type": "qna",
       "product_id": 1,
-      "seller_id": 2,
+      "seller_id": 1,
       "views": 5,
       "user": {
-        "_id": 4,
-        "name": "제이지",
+        "_id": 1,
+        "name": "hello@9Dog.co.kr",
         "image": "uploadFiles/user-jayg.webp"
       },
-      "title": "크기가 얼마만한가요?",
-      "content": "아이가 6살인데 가지고 놀기 적당한 크기인가요?",
+      "title": "대형견도 양이 충분한가요?",
+      "content": "아이가 골든 리트리버인데 한달 동안 먹기 적당한 양 인가요?",
+      "extra": {
+        "product_name": "스몰퍼피 치킨앤라이스",
+        "product_info": "DHA와 EPA가 풍부하게 함유되어 성장기 강아지의 두뇌 발달과 시력 형성을 촉진하며, 학습 능력 향상에도 도움을 줍니다. 칼슘과 인이 1.2:1의 최적 비율로 설계되어 소형견 특유의 빠른 골격 성장을 안정적으로 지원합니다.",
+        "product_id": "1",
+        "tag": ["답변 대기", "답변 완료"],
+        "product_img": "/images/smallAdultChiken.png"
+      },
       "createdAt": "2026.01.01 14:20:00",
       "updatedAt": "2026.01.01 14:20:00",
       "replies": [
@@ -976,6 +1007,7 @@
         }
       ]
     },
+
     {
       "type": "qna",
       "product_id": 1,
