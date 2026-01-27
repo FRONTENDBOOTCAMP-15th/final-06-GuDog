@@ -108,13 +108,12 @@
   ],
   "product": [
     {
-      "seller_id": 2,
-      "price": 22800,
-      "shippingFees": 0,
+      "seller_id": 1,
+      "price": 45000,
       "show": true,
       "active": true,
-      "name": "캥거루 스턴트 독 로봇완구",
-      "quantity": 320,
+      "name": "스몰퍼피 치킨앤라이스",
+      "quantity": 127,
       "buyQuantity": 310,
       "mainImages": [
         {
@@ -122,7 +121,7 @@
           "name": "sample-dog.jpg"
         }
       ],
-      "content": "<div class=\"product-detail\"><p>캥거루 스턴트 독 로봇완구 상세 설명</p></div>",
+      "content": "DHA와 EPA가 풍부하게 함유되어 성장기 강아지의 두뇌 발달과 시력 형성을 촉진하며, 학습 능력 향상에도 도움을 줍니다. 칼슘과 인이 1.2:1의 최적 비율로 설계되어 소형견 특유의 빠른 골격 성장을 안정적으로 지원합니다.",
       "extra": {
         "isNew": true,
         "isBest": true,
@@ -131,13 +130,12 @@
       }
     },
     {
-      "seller_id": 2,
-      "price": 17260,
-      "shippingFees": 2500,
+      "seller_id": 1,
+      "price": 47000,
       "show": true,
       "active": true,
-      "name": "헬로카봇 스톰다이버",
-      "quantity": 200,
+      "name": "미디엄퍼피 치킨앤오트밀",
+      "quantity": 89,
       "buyQuantity": 198,
       "mainImages": [
         {
@@ -145,7 +143,7 @@
           "name": "sample-diver.jpg"
         }
       ],
-      "content": "<div class=\"product-detail\"><p>헬로카봇 스톰다이버 상세 설명</p></div>",
+      "content": "중형견의 성장 속도에 맞춰 칼슘과 인의 균형을 최적화하여 뼈와 관절이 건강하게 발달하도록 설계되었습니다. 오트밀은 소화가 부드럽고 식이섬유가 풍부하여 성장기 강아지의 민감한 장 건강을 보호합니다.",
       "extra": {
         "isNew": false,
         "isBest": true,
@@ -154,13 +152,12 @@
       }
     },
     {
-      "seller_id": 2,
-      "price": 48870,
-      "shippingFees": 0,
+      "seller_id": 1,
+      "price": 52000,
       "show": true,
       "active": true,
-      "name": "레고 클래식 라지 조립 박스 10698",
-      "quantity": 100,
+      "name": "라지퍼피 치킨앤브라운라이스",
+      "quantity": 43,
       "buyQuantity": 99,
       "mainImages": [
         {
@@ -177,13 +174,12 @@
       }
     },
     {
-      "seller_id": 3,
-      "price": 45000,
-      "shippingFees": 3500,
+      "seller_id": 1,
+      "price": 55000,
       "show": true,
       "active": true,
-      "name": "레고 테크닉 42151 부가티 볼리드",
-      "quantity": 100,
+      "name": "퍼피 연어앤고구마 그레인프리",
+      "quantity": 62,
       "buyQuantity": 89,
       "mainImages": [
         {
