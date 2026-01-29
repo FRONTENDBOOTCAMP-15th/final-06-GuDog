@@ -1,48 +1,5 @@
 {
-  "user": [
-    {
-      "email": "hello@9Dog.co.kr",
-      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
-      "name": "hello@9Dog.co.kr",
-      "phone": "01012345678",
-      "address": "서울특별시 종로구 종로3길 17",
-      "type": "seller",
-      "loginType": "email",
-      "image": "/images/moomin.png",
-      "extra": {
-        "zipcode": "03155",
-        "detailaddress": "D타워 D1동 16, 17층"
-      }
-    },
-    {
-      "email": "bye@9Dog.co.kr",
-      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
-      "name": "bye@9Dog.co.kr",
-      "phone": "01012341234",
-      "address": "서울특별시 종로구 종로6길 19",
-      "type": "seller",
-      "loginType": "email",
-      "image": "/images/angrymoomin.png",
-      "extra": {
-        "zipcode": "03154",
-        "detailaddress": "A타워 3동 20, 7층"
-      }
-    },
-    {
-      "email": "happy@9Dog.co.kr",
-      "password": "$2b$10$S.8GNMDyvUF0xzujPtHBu.j5gtS19.OhRmYbpJBnCHg2S83WLx1T2",
-      "name": "happy@9Dog.co.kr",
-      "phone": "01056785678",
-      "address": "부산광역시 해운대구 센텀동로 57",
-      "type": "user",
-      "loginType": "email",
-      "image": "/images/brighteyesbillain.png",
-      "extra": {
-        "zipcode": "48059",
-        "detailaddress": "해운대구 우동 1457 빨간 지붕"
-      }
-    }
-  ],
+  "user": [],
   "product": [
     {
       "price": 45000,
@@ -54,7 +11,10 @@
       "active": true,
       "name": "스몰퍼피 치킨앤라이스",
       "mainImages": [
-        { "path": "/images/small_puppy_chicken_rice.png", "name": "small_puppy_chicken_rice.jpg" }
+        {
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/S5T-pZwfqIF.png",
+          "name": "small_puppy_chicken_rice.jpg"
+        }
       ],
       "extra": {
         "content": "DHA와 EPA가 풍부하게 함유되어 성장기 강아지의 두뇌 발달과 시력 형성을 촉진하며, 학습 능력 향상에도 도움을 줍니다. 칼슘과 인이 1.2:1의 최적 비율로 설계되어 소형견 특유의 빠른 골격 성장을 안정적으로 지원합니다.",
@@ -85,10 +45,13 @@
           "diseases": []
         },
         "specialFeatures": ["퍼피 전용", "소형견 키블", "DHA 함유"],
-        "nutrition": { "protein": 32, "fat": 18, "moisture": 10 }
+        "nutrition": {
+          "protein": 32,
+          "fat": 18,
+          "moisture": 10
+        }
       }
     },
-
     {
       "price": 47000,
       "quantity": 89,
@@ -100,7 +63,7 @@
       "name": "미디엄퍼피 치킨앤오트밀",
       "mainImages": [
         {
-          "path": "/images/medium_puppy_chicken_oatmeal.jpg.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/kZceYBFvBv.png",
           "name": "medium_puppy_chicken_oatmeal.jpg"
         }
       ],
@@ -133,10 +96,13 @@
           "diseases": []
         },
         "specialFeatures": ["퍼피 전용"],
-        "nutrition": { "protein": 30, "fat": 17, "moisture": 10 }
+        "nutrition": {
+          "protein": 30,
+          "fat": 17,
+          "moisture": 10
+        }
       }
     },
-
     {
       "price": 52000,
       "quantity": 43,
@@ -148,7 +114,7 @@
       "name": "라지퍼피 치킨앤브라운라이스",
       "mainImages": [
         {
-          "path": "/images/large_puppy_chicken_brownrice.jpg",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/uauCDxTFuz.png",
           "name": "large_puppy_chicken_brownrice.jpg"
         }
       ],
@@ -181,10 +147,13 @@
           "diseases": []
         },
         "specialFeatures": ["퍼피 전용", "관절 영양 강화"],
-        "nutrition": { "protein": 28, "fat": 14, "moisture": 10 }
+        "nutrition": {
+          "protein": 28,
+          "fat": 14,
+          "moisture": 10
+        }
       }
     },
-
     {
       "price": 55000,
       "quantity": 62,
@@ -196,7 +165,7 @@
       "name": "퍼피 연어앤고구마 그레인프리",
       "mainImages": [
         {
-          "path": "/images/puppy_gf_salmon_sweetpotato.jpg",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/AVLg5kwD5g.png",
           "name": "puppy_gf_salmon_sweetpotato.jpg"
         }
       ],
@@ -229,10 +198,13 @@
           "diseases": []
         },
         "specialFeatures": ["퍼피 전용", "그레인프리", "오메가3 풍부", "저자극성"],
-        "nutrition": { "protein": 30, "fat": 16, "moisture": 10 }
+        "nutrition": {
+          "protein": 30,
+          "fat": 16,
+          "moisture": 10
+        }
       }
     },
-
     {
       "price": 43000,
       "quantity": 156,
@@ -244,7 +216,7 @@
       "name": "스몰어덜트 치킨앤라이스",
       "mainImages": [
         {
-          "path": "/images/small_adult_chicken_rice.jpg",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/T1z25ZBJrBp.png",
           "name": "small_adult_chicken_rice.jpg"
         }
       ],
@@ -277,10 +249,13 @@
           "diseases": []
         },
         "specialFeatures": ["소형견 키볼"],
-        "nutrition": { "protein": 28, "fat": 16, "moisture": 10 }
+        "nutrition": {
+          "protein": 28,
+          "fat": 16,
+          "moisture": 10
+        }
       }
     },
-
     {
       "price": 44000,
       "quantity": 97,
@@ -292,7 +267,7 @@
       "name": "스몰어덜트 오리앤귀리",
       "mainImages": [
         {
-          "path": "/images/small_adult_duck_oat.jpg",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/eWcz2IqRiu2.png",
           "name": "small_adult_duck_oat.jpg"
         }
       ],
@@ -325,10 +300,13 @@
           "diseases": []
         },
         "specialFeatures": ["소형견 키볼", "저자극성"],
-        "nutrition": { "protein": 27, "fat": 15, "moisture": 10 }
+        "nutrition": {
+          "protein": 27,
+          "fat": 15,
+          "moisture": 10
+        }
       }
     },
-
     {
       "price": 46000,
       "quantity": 78,
@@ -340,7 +318,7 @@
       "name": "미디엄어덜트 치킨앤보리",
       "mainImages": [
         {
-          "path": "/images/medium_adult_chicken_barley.jpg",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/292vYbvuz7.png",
           "name": "medium_adult_chicken_barley.jpg"
         }
       ],
@@ -373,10 +351,13 @@
           "diseases": []
         },
         "specialFeatures": ["소형견 키볼", "저자극성"],
-        "nutrition": { "protein": 27, "fat": 15, "moisture": 10 }
+        "nutrition": {
+          "protein": 27,
+          "fat": 15,
+          "moisture": 10
+        }
       }
     },
-
     {
       "price": 50000,
       "quantity": 36,
@@ -388,7 +369,7 @@
       "name": "라지어덜트 치킨앤현미",
       "mainImages": [
         {
-          "path": "/images/large_adult_chicken_brownrice.jpg",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/RIne6wmC0o.png",
           "name": "large_adult_chicken_brownrice.jpg"
         }
       ],
@@ -421,7 +402,11 @@
           "diseases": []
         },
         "specialFeatures": ["관절 영양 강화"],
-        "nutrition": { "protein": 25, "fat": 12, "moisture": 10 }
+        "nutrition": {
+          "protein": 25,
+          "fat": 12,
+          "moisture": 10
+        }
       }
     },
     {
@@ -435,7 +420,7 @@
       "name": "라지어덜트 치킨앤현미",
       "mainImages": [
         {
-          "path": "/images/large_adult_chicken_brownrice.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/RIne6wmC0o.png",
           "name": "large_adult_chicken_brownrice.png"
         }
       ],
@@ -468,7 +453,11 @@
           "diseases": []
         },
         "specialFeatures": ["관절 영양 강화"],
-        "nutrition": { "protein": 25, "fat": 12, "moisture": 10 }
+        "nutrition": {
+          "protein": 25,
+          "fat": 12,
+          "moisture": 10
+        }
       }
     },
     {
@@ -482,7 +471,7 @@
       "name": "라지어덜트 연어앤감자",
       "mainImages": [
         {
-          "path": "/images/large_adult_salmon_potato.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/xPJsjIURTA.png",
           "name": "large_adult_salmon_potato.png"
         }
       ],
@@ -515,7 +504,11 @@
           "diseases": []
         },
         "specialFeatures": ["오메가3 풍부"],
-        "nutrition": { "protein": 24, "fat": 12, "moisture": 10 }
+        "nutrition": {
+          "protein": 24,
+          "fat": 12,
+          "moisture": 10
+        }
       }
     },
     {
@@ -529,7 +522,7 @@
       "name": "스킨케어 연어앤고구마",
       "mainImages": [
         {
-          "path": "/images/skincare_salmon_sweetpotato.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/6xrN1YrivHH.png",
           "name": "skincare_salmon_sweetpotato.png"
         }
       ],
@@ -562,7 +555,11 @@
           "diseases": []
         },
         "specialFeatures": ["그레인프리", "오메가3 풍부", "저자극성"],
-        "nutrition": { "protein": 26, "fat": 15, "moisture": 10 }
+        "nutrition": {
+          "protein": 26,
+          "fat": 15,
+          "moisture": 10
+        }
       }
     },
     {
@@ -576,7 +573,7 @@
       "name": "다이제스티브 오리앤귀리",
       "mainImages": [
         {
-          "path": "/images/digestive_duck_oat.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/8bE0VkIFAR.png",
           "name": "digestive_duck_oat.png"
         }
       ],
@@ -609,7 +606,11 @@
           "diseases": []
         },
         "specialFeatures": ["저자극성"],
-        "nutrition": { "protein": 25, "fat": 13, "moisture": 10 }
+        "nutrition": {
+          "protein": 25,
+          "fat": 13,
+          "moisture": 10
+        }
       }
     },
     {
@@ -623,7 +624,7 @@
       "name": "조인트케어 치킨앤현미",
       "mainImages": [
         {
-          "path": "/images/jointcare_chicken_brownric.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/JTaE8IcusF.png",
           "name": "jointcare_chicken_brownric.png"
         }
       ],
@@ -656,7 +657,11 @@
           "diseases": []
         },
         "specialFeatures": ["관절 영양 강화"],
-        "nutrition": { "protein": 26, "fat": 12, "moisture": 10 }
+        "nutrition": {
+          "protein": 26,
+          "fat": 12,
+          "moisture": 10
+        }
       }
     },
     {
@@ -670,7 +675,7 @@
       "name": "조인트케어 연어앤감",
       "mainImages": [
         {
-          "path": "/images/jointcare_salmon_potato.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/BEQXVh_pDf.png",
           "name": "jointcare_salmon_potato.png"
         }
       ],
@@ -703,7 +708,11 @@
           "diseases": []
         },
         "specialFeatures": ["관절 영양 강화", "오메가3 풍부"],
-        "nutrition": { "protein": 25, "fat": 12, "moisture": 10 }
+        "nutrition": {
+          "protein": 25,
+          "fat": 12,
+          "moisture": 10
+        }
       }
     },
     {
@@ -717,7 +726,7 @@
       "name": "웨이트케어 치킨앤보리",
       "mainImages": [
         {
-          "path": "/images/weightcare_chicken_barley.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/Rzy0ezhpbCJ.png",
           "name": "weightcare_chicken_barley.png"
         }
       ],
@@ -750,7 +759,11 @@
           "diseases": []
         },
         "specialFeatures": ["저칼로리"],
-        "nutrition": { "protein": 28, "fat": 8, "moisture": 10 }
+        "nutrition": {
+          "protein": 28,
+          "fat": 8,
+          "moisture": 10
+        }
       }
     },
     {
@@ -764,7 +777,7 @@
       "name": "웨이트케어 칠면조앤고구마",
       "mainImages": [
         {
-          "path": "/images/weightcare_turkey_sweetpotato.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/1HYkzw8_uh8.png",
           "name": "weightcare_turkey_sweetpotato.png"
         }
       ],
@@ -797,10 +810,13 @@
           "diseases": []
         },
         "specialFeatures": ["저칼로리", "그레인프리"],
-        "nutrition": { "protein": 30, "fat": 7, "moisture": 10 }
+        "nutrition": {
+          "protein": 30,
+          "fat": 7,
+          "moisture": 10
+        }
       }
     },
-
     {
       "price": 46000,
       "quantity": 82,
@@ -812,7 +828,7 @@
       "name": "스몰시니어 치킨앤현미",
       "mainImages": [
         {
-          "path": "/images/smallsenior-chickenbrownrice.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/M3-w42jf3pI.png",
           "name": "smallsenior-chickenbrownrice.png"
         }
       ],
@@ -845,7 +861,11 @@
           "diseases": []
         },
         "specialFeatures": ["시니어 전용", "소형견 키블", "관절 영양 강화", "저칼로리"],
-        "nutrition": { "protein": 25, "fat": 11, "moisture": 10 }
+        "nutrition": {
+          "protein": 25,
+          "fat": 11,
+          "moisture": 10
+        }
       }
     },
     {
@@ -858,7 +878,10 @@
       "active": true,
       "name": "스몰시니어 오리앤귀리",
       "mainImages": [
-        { "path": "/images/smallsenior-duckoat.png", "name": "smallsenior-duckoat.png" }
+        {
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/NxjOidUiY_R.png",
+          "name": "smallsenior-duckoat.png"
+        }
       ],
       "extra": {
         "content": "프로바이오틱스와 프리바이오틱스가 노화로 인해 약해진 장 기능을 개선하고, 변비나 설사 등 노령견에게 흔한 소화 문제를 예방합니다. 오리고기는 닭고기에 알러지가 생긴 노령견에게 새로운 단백질원을 제공합니다.",
@@ -889,7 +912,11 @@
           "diseases": []
         },
         "specialFeatures": ["시니어 전용", "소형견 키블", "저자극성"],
-        "nutrition": { "protein": 24, "fat": 11, "moisture": 10 }
+        "nutrition": {
+          "protein": 24,
+          "fat": 11,
+          "moisture": 10
+        }
       }
     },
     {
@@ -903,7 +930,7 @@
       "name": "미디엄시니어 연어앤현미",
       "mainImages": [
         {
-          "path": "/images/mediunsenior-salmonbrownrice.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/r46HfOwN0h.png",
           "name": "mediunsenior-salmonbrownrice.png"
         }
       ],
@@ -936,7 +963,11 @@
           "diseases": []
         },
         "specialFeatures": ["시니어 전용", "관절 영양 강화", "오메가3 풍부", "항산화 성분"],
-        "nutrition": { "protein": 24, "fat": 10, "moisture": 10 }
+        "nutrition": {
+          "protein": 24,
+          "fat": 10,
+          "moisture": 10
+        }
       }
     },
     {
@@ -950,7 +981,7 @@
       "name": "라지시니어 치킨앤현미",
       "mainImages": [
         {
-          "path": "/images/largesenior-chickenbrownrice.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/eR7aZs_z_n.png",
           "name": "largesenior-chickenbrownrice.png"
         }
       ],
@@ -983,7 +1014,11 @@
           "diseases": ["심장 질환"]
         },
         "specialFeatures": ["시니어 전용", "관절 영양 강화", "저칼로리"],
-        "nutrition": { "protein": 23, "fat": 10, "moisture": 10 }
+        "nutrition": {
+          "protein": 23,
+          "fat": 10,
+          "moisture": 10
+        }
       }
     },
     {
@@ -996,7 +1031,10 @@
       "active": true,
       "name": "라지시니어 연어앤감자",
       "mainImages": [
-        { "path": "/images/largesenior-salmonpotato.png", "name": "largesenior-salmonpotato.png" }
+        {
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/Jqhrx6LNJP.png",
+          "name": "largesenior-salmonpotato.png"
+        }
       ],
       "extra": {
         "content": "연어의 DHA와 EPA가 노화로 인한 인지 기능 저하를 늦추고 뇌 건강을 지원하여 노령견이 또렷한 정신 상태를 유지하도록 돕습니다. 관절과 피부 건강을 동시에 케어하는 복합 설계로, 대형 노령견의 삶의 질을 종합적으로 높입니다.",
@@ -1033,7 +1071,11 @@
           "저칼로리",
           "항산화 성분"
         ],
-        "nutrition": { "protein": 22, "fat": 9, "moisture": 10 }
+        "nutrition": {
+          "protein": 22,
+          "fat": 9,
+          "moisture": 10
+        }
       }
     },
     {
@@ -1047,7 +1089,7 @@
       "name": "싱글프로틴 양고기앤고구마",
       "mainImages": [
         {
-          "path": "/images/singleprotin-lambsweetpotato.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/LYRE37X7Qq4.png",
           "name": "singleprotin-lambsweetpotato.png"
         }
       ],
@@ -1080,7 +1122,11 @@
           "diseases": []
         },
         "specialFeatures": ["그레인프리", "저자극성", "싱글프로틴"],
-        "nutrition": { "protein": 24, "fat": 13, "moisture": 10 }
+        "nutrition": {
+          "protein": 24,
+          "fat": 13,
+          "moisture": 10
+        }
       }
     },
     {
@@ -1094,7 +1140,7 @@
       "name": "싱글프로틴 연어앤타피오카",
       "mainImages": [
         {
-          "path": "/images/singleprotin-slamontapioca.png",
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/c9KWFwm_pxW.png",
           "name": "singleprotin-slamontapioca.png"
         }
       ],
@@ -1127,7 +1173,11 @@
           "diseases": []
         },
         "specialFeatures": ["그레인프리", "저자극성", "오메가3 풍부", "싱글프로틴"],
-        "nutrition": { "protein": 24, "fat": 14, "moisture": 10 }
+        "nutrition": {
+          "protein": 24,
+          "fat": 14,
+          "moisture": 10
+        }
       }
     },
     {
@@ -1140,7 +1190,10 @@
       "active": true,
       "name": "싱글프로틴 오리앤감자",
       "mainImages": [
-        { "path": "/images/singleprotin-duckpotato.png", "name": "singleprotin-duckpotato.png" }
+        {
+          "path": "https://res.cloudinary.com/ddedslqvv/image/upload/v1769501329/febc15-final06-ecad/-OOLO24ZXnN.png",
+          "name": "singleprotin-duckpotato.png"
+        }
       ],
       "extra": {
         "content": "오리고기만을 단일 동물성 단백질로 사용하여 닭고기, 생선, 양고기 등 여러 단백질에 동시에 알러지가 있는 복합 알러지 강아지도 안전하게 급여할 수 있습니다. 곡물, 닭고기, 생선을 모두 함유하지 않아 가장 흔한 알러지 유발 원료를 완벽히 배제하였습니다.",
@@ -1171,486 +1224,20 @@
           "diseases": []
         },
         "specialFeatures": ["그레인프리", "저자극성", "싱글프로틴"],
-        "nutrition": { "protein": 25, "fat": 13, "moisture": 10 }
-      }
-    }
-  ],
-  "order": [
-    {
-      "user_id": 4,
-      "state": "OS020",
-      "products": [
-        {
-          "_id": 2,
-          "seller_id": 2,
-          "state": "OS020",
-          "name": "헬로카봇 스톰다이버",
-          "image": {
-            "path": "uploadFiles/sample-diver.jpg",
-            "name": "sample-diver.jpg"
-          },
-          "quantity": 2,
-          "price": 34520,
-          "review_id": 3
+        "nutrition": {
+          "protein": 25,
+          "fat": 13,
+          "moisture": 10
         }
-      ],
-      "cost": {
-        "products": 34520,
-        "shippingFees": 2500,
-        "discount": {
-          "products": 0,
-          "shippingFees": 0
-        },
-        "total": 37020
-      },
-      "address": {
-        "name": "회사",
-        "value": "서울시 강남구 신사동 234"
-      }
-    },
-    {
-      "user_id": 4,
-      "state": "OS010",
-      "products": [
-        {
-          "_id": 3,
-          "seller_id": 2,
-          "state": "OS010",
-          "name": "레고 클래식 라지 조립 박스 10698",
-          "size": "M",
-          "image": {
-            "path": "uploadFiles/sample-classic.jpg",
-            "name": "sample-classic.jpg"
-          },
-          "quantity": 1,
-          "price": 48870
-        },
-        {
-          "_id": 4,
-          "seller_id": 3,
-          "state": "OS010",
-          "name": "레고 테크닉 42151 부가티 볼리드",
-          "color": "red",
-          "image": {
-            "path": "uploadFiles/sample-bugatti.png",
-            "name": "sample-bugatti.png"
-          },
-          "quantity": 2,
-          "price": 90000,
-          "review_id": 2
-        }
-      ],
-      "cost": {
-        "products": 138840,
-        "shippingFees": 3500,
-        "discount": {
-          "products": 13880,
-          "shippingFees": 3500
-        },
-        "total": 124960
-      },
-      "address": {
-        "name": "집",
-        "value": "서울시 강남구 역삼동 123"
-      }
-    },
-    {
-      "user_id": 4,
-      "state": "OS040",
-      "products": [
-        {
-          "_id": 4,
-          "seller_id": 3,
-          "state": "OS110",
-          "name": "레고 테크닉 42151 부가티 볼리드",
-          "image": {
-            "path": "uploadFiles/sample-bugatti.png",
-            "name": "sample-bugatti.png"
-          },
-          "quantity": 1,
-          "price": 45000,
-          "review_id": 1
-        }
-      ],
-      "cost": {
-        "products": 45000,
-        "shippingFees": 3500,
-        "discount": {
-          "products": 4500,
-          "shippingFees": 0
-        },
-        "total": 44000
-      },
-      "address": {
-        "name": "학교",
-        "value": "서울시 강남구 역삼동 234"
-      },
-      "payment": {
-        "success": true,
-        "imp_uid": "imp_138601212227",
-        "pay_method": "card",
-        "merchant_uid": "mid_1702540599641",
-        "name": "레고 테크닉 42151 부가티 볼리드",
-        "paid_amount": 45000,
-        "currency": "KRW",
-        "pg_provider": "html5_inicis",
-        "pg_type": "payment",
-        "pg_tid": "StdpayCARDINIpayTest20231214165706277441",
-        "apply_num": "30123157",
-        "buyer_name": "제이지",
-        "buyer_email": "aceppin@daum.net",
-        "buyer_tel": "01044445555",
-        "buyer_addr": "",
-        "buyer_postcode": "",
-        "custom_data": null,
-        "status": "paid",
-        "paid_at": 1702540626,
-        "receipt_url": "https://iniweb.inicis.com/DefaultWebApp/mall/cr/cm/mCmReceipt_head.jsp?noTid=StdpayCARDINIpayTest20231214165706277441&noMethod=1",
-        "card_name": "국민KB카드",
-        "bank_name": null,
-        "card_quota": 0,
-        "card_number": "457973*********5"
-      },
-      "delivery": {
-        "company": "한진 택배",
-        "trackingNumber": "364495958003",
-        "url": "https://trace.cjlogistics.com/next/tracking.html?wblNo=364495958003"
-      }
-    },
-    {
-      "user_id": 2,
-      "state": "OS040",
-      "products": [
-        {
-          "_id": 2,
-          "seller_id": 2,
-          "state": "OS310",
-          "name": "헬로카봇 스톰다이버",
-          "image": {
-            "path": "uploadFiles/sample-diver.jpg",
-            "name": "sample-diver.jpg"
-          },
-          "quantity": 1,
-          "price": 17260,
-          "review_id": 2
-        }
-      ],
-      "cost": {
-        "products": 17260,
-        "shippingFees": 2500,
-        "discount": {
-          "products": 0,
-          "shippingFees": 0
-        },
-        "total": 19760
-      },
-      "address": {
-        "name": "학교",
-        "value": "서울시 강남구 역삼동 234"
-      },
-      "delivery": {
-        "company": "한진 택배",
-        "trackingNumber": "364495958003",
-        "url": "https://trace.cjlogistics.com/next/tracking.html?wblNo=364495958003"
       }
     }
   ],
-  "review": [
-    {
-      "user_id": 4,
-      "user": {
-        "_id": 4,
-        "name": "hello@9Dog.co.kr",
-        "image": "/images/smallAdultChiken.png"
-      },
-      "order_id": 1,
-      "product_id": 2,
-      "rating": 5,
-      "content": "우리 애가 너무 잘 먹어요!.",
-      "extra": {
-        "createdAt": "2026-01-27",
-        "likeCount": "7",
-        "price": "45000",
-        "reviewId": "1"
-      }
-    },
-    {
-      "user_id": 2,
-      "user": {
-        "_id": 2,
-        "name": "네오",
-        "image": "uploadFiles/user-neo.png"
-      },
-      "order_id": 4,
-      "product_id": 2,
-      "rating": 4,
-      "content": "배송이 좀 느려요."
-    },
-    {
-      "user_id": 4,
-      "user": {
-        "_id": 4,
-        "name": "제이지",
-        "image": "uploadFiles/user-jayg.webp"
-      },
-      "order_id": 2,
-      "product_id": 3,
-      "rating": 1,
-      "content": "하루만에 고장났어요.",
-      "extra": {
-        "title": "추천하지 않습니다."
-      }
-    }
-  ],
-  "cart": [
-    {
-      "user_id": 4,
-      "product_id": 1,
-      "quantity": 2
-    },
-    {
-      "user_id": 4,
-      "product_id": 2,
-      "quantity": 1
-    },
-    {
-      "user_id": 2,
-      "product_id": 3,
-      "quantity": 2
-    },
-    {
-      "user_id": 2,
-      "product_id": 4,
-      "quantity": 3
-    }
-  ],
-  "bookmark": [
-    {
-      "user_id": 4,
-      "user": {
-        "_id": 4,
-        "name": "제이지",
-        "image": "uploadFiles/user-jayg.webp"
-      },
-      "type": "product",
-      "is_like": "true",
-      "target_id": 2,
-      "extra": {
-        "product_id": "1",
-        "post_id": "1"
-      },
-      "memo": "첫째 크리스마스 선물."
-    },
-    {
-      "user_id": 4,
-      "user": {
-        "_id": 4,
-        "name": "제이지",
-        "image": "uploadFiles/user-jayg.webp"
-      },
-      "type": "product",
-      "target_id": 4,
-      "memo": "둘째 생일 선물"
-    },
-    {
-      "user_id": 4,
-      "user": {
-        "_id": 4,
-        "name": "제이지",
-        "image": "uploadFiles/user-jayg.webp"
-      },
-      "type": "user",
-      "target_id": 2,
-      "memo": "단골 셀러"
-    },
-    {
-      "user_id": 4,
-      "user": {
-        "_id": 4,
-        "name": "제이지",
-        "image": "uploadFiles/user-jayg.webp"
-      },
-      "type": "post",
-      "target_id": 1,
-      "memo": "크기 문의글 북마크"
-    },
-    {
-      "user_id": 2,
-      "user": {
-        "_id": 2,
-        "name": "네오",
-        "image": "uploadFiles/user-neo.png"
-      },
-      "type": "product",
-      "target_id": 4,
-      "memo": "1순위로 살것!"
-    }
-  ],
-  "post": [
-    {
-      "type": "qna",
-      "product_id": 1,
-      "views": 5,
-      "user": {
-        "_id": 1,
-        "name": "hello@9Dog.co.kr",
-        "image": "/images/moomin.png"
-      },
-      "title": "대형견도 양이 충분한가요?",
-      "content": "아이가 골든 리트리버인데 한달 동안 먹기 적당한 양 인가요?",
-      "extra": {
-        "product_name": "스몰퍼피 치킨앤라이스",
-        "product_info": "DHA와 EPA가 풍부하게 함유되어 성장기 강아지의 두뇌 발달과 시력 형성을 촉진하며, 학습 능력 향상에도 도움을 줍니다. 칼슘과 인이 1.2:1의 최적 비율로 설계되어 소형견 특유의 빠른 골격 성장을 안정적으로 지원합니다.",
-        "product_id": "1",
-        "tag": ["답변 대기", "답변 완료"],
-        "product_img": "/images/small_puppy_chicken_rice.png"
-      },
-      "createdAt": "2026.01.26 14:20:00",
-      "updatedAt": "2026.01.26 14:20:00",
-      "replies": {
-        "_id": 1,
-        "user": {
-          "_id": 2,
-          "name": "bye@9Dog.co.kr",
-          "image": "/images/angrymoomin.png"
-        },
-        "content": "안녕하세요, 고객님. 해당 상품은 소형견 전용 상품입니다. 대형견 전용 상품인 라지퍼피 치킨앤브라운라이스 추천드립니다. 자세한 정보는 상품 상세 정보에에서 확인하실 수 있습니다. 감사합니다.",
-        "like": 5,
-        "createdAt": "2026.01.26 15:30:00",
-        "updatedAt": "2026.01.26 15:30:00"
-      }
-    },
-    {
-      "type": "qna",
-      "product_id": 7,
-      "views": 8,
-      "user": {
-        "_id": 1,
-        "name": "happy@9Dog.co.kr",
-        "image": "/images/brighteyesbillain.png"
-      },
-      "title": "언제 받을 수 있나요?",
-      "content": "오늘 주문했는데 언제 받을 수 있나요?",
-      "extra": {
-        "product_name": "미디엄어덜트 치킨앤보리",
-        "product_info": "중형견의 체중과 활동량에 최적화된 영양 밸런스로 설계되어 과체중이나 영양 부족 없이 이상적인 체형을 유지할 수 있습니다. 보리는 저혈당 지수 탄수화물로 에너지를 천천히 방출하여 활동적인 중형견이 하루 종일 안정적인 에너지를 유지합니다.",
-        "product_id": "7",
-        "tag": ["답변 대기", "답변 완료"],
-        "product_img": "/images/medium_adult_chicken_barley.jpg"
-      },
-      "createdAt": "2026.01.27 11:12:00",
-      "updatedAt": "2026.01.27 11:12:00"
-    }
-  ],
+  "order": [],
+  "review": [],
+  "cart": [],
+  "bookmark": [],
+  "post": [],
   "code": [
-    {
-      "_id": "productCategory",
-      "title": "상품 카테고리",
-      "codes": [
-        {
-          "sort": 2,
-          "code": "PC01",
-          "value": "어린이",
-          "depth": 1
-        },
-        {
-          "sort": 3,
-          "code": "PC0101",
-          "value": "퍼즐",
-          "parent": "PC01",
-          "depth": 2
-        },
-        {
-          "sort": 1,
-          "code": "PC0102",
-          "value": "보드게임",
-          "parent": "PC01",
-          "depth": 2
-        },
-        {
-          "sort": 2,
-          "code": "PC010201",
-          "value": "2인용",
-          "parent": "PC0102",
-          "depth": 3
-        },
-        {
-          "sort": 1,
-          "code": "PC010202",
-          "value": "3~4인용",
-          "parent": "PC0102",
-          "depth": 3
-        },
-        {
-          "sort": 2,
-          "code": "PC0103",
-          "value": "레고",
-          "parent": "PC01",
-          "depth": 2
-        },
-        {
-          "sort": 4,
-          "code": "PC0104",
-          "value": "로봇",
-          "parent": "PC01",
-          "depth": 2
-        },
-        {
-          "sort": 1,
-          "code": "PC02",
-          "value": "스포츠",
-          "depth": 1
-        },
-        {
-          "sort": 1,
-          "code": "PC0201",
-          "value": "축구",
-          "parent": "PC02",
-          "depth": 2
-        },
-        {
-          "sort": 3,
-          "code": "PC0202",
-          "value": "야구",
-          "parent": "PC02",
-          "depth": 2
-        },
-        {
-          "sort": 2,
-          "code": "PC0203",
-          "value": "농구",
-          "parent": "PC02",
-          "depth": 2
-        },
-        {
-          "sort": 3,
-          "code": "PC03",
-          "value": "어른",
-          "depth": 1
-        },
-        {
-          "sort": 1,
-          "code": "PC0301",
-          "value": "원격 조종",
-          "parent": "PC03",
-          "depth": 2
-        },
-        {
-          "sort": 2,
-          "code": "PC0302",
-          "value": "퍼즐",
-          "parent": "PC03",
-          "depth": 2
-        },
-        {
-          "sort": 3,
-          "code": "PC0303",
-          "value": "레고",
-          "parent": "PC03",
-          "depth": 2
-        }
-      ]
-    },
     {
       "_id": "orderState",
       "title": "주문 상태",
@@ -1724,30 +1311,6 @@
           "sort": 14,
           "code": "OS330",
           "value": "환불 완료"
-        }
-      ]
-    },
-    {
-      "_id": "membershipClass",
-      "title": "회원 등급",
-      "codes": [
-        {
-          "sort": 1,
-          "code": "MC01",
-          "value": "일반",
-          "discountRate": 0
-        },
-        {
-          "sort": 2,
-          "code": "MC02",
-          "value": "프리미엄",
-          "discountRate": 10
-        },
-        {
-          "sort": 3,
-          "code": "MC03",
-          "value": "VIP",
-          "discountRate": 20
         }
       ]
     }

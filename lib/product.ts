@@ -90,3 +90,41 @@ export async function getProducts(
     return { ok: 0, message: "일시적인 네트워크 문제로 상품 목록 조회에 실패했습니다." };
   }
 }
+
+/**
+ * 특정 code 배열로 해당 상품들만 조회
+ * @param codes - 조회할 상품 code 배열
+ */
+export async function getProductsByCodes(codes: string[]) {
+  try {
+    const customQuery = JSON.stringify({
+      "extra.code": { $in: codes },
+    });
+
+    const params = new URLSearchParams();
+    params.set("custom", customQuery);
+
+    console.log("요청 URL:", `${API_URL}/products?${params.toString()}`);
+
+    const response = await fetch(`${API_URL}/products?${params.toString()}`, {
+      headers: {
+        "Client-Id": CLIENT_ID,
+      },
+    });
+
+    console.log("응답 상태:", response.status);
+
+    const data = await response.json();
+    console.log("응답 데이터:", data);
+
+    if (!response.ok) {
+      console.error("API 에러:", data);
+      throw new Error("상품 조회 실패");
+    }
+
+    return { ok: true, item: data.item };
+  } catch (error) {
+    console.error("getProductsByCodes 에러:", error);
+    return { ok: false, item: null };
+  }
+}
