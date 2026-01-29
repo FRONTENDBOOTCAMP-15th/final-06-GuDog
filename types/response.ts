@@ -19,6 +19,7 @@ export interface UserInfoRes {
 export interface UserListRes {
   ok: 1;
   item: User[];
+  pagination: Pagination;
 }
 
 // 로그인 성공 시 결과
@@ -52,6 +53,7 @@ export interface ErrorRes {
 export interface ReviewListRes {
   ok: 1;
   item: Review[];
+  pagination: Pagination;
 }
 
 // 후기 상세 조회 결과 타입 (단일 항목)
@@ -64,6 +66,7 @@ export interface ReviewInfoRes {
 export interface ProductListRes {
   ok: 1;
   item: Product[];
+  pagination: Pagination;
 }
 
 // 상품 상세 조회 결과
@@ -76,6 +79,7 @@ export interface ProductInfoRes {
 export interface PostListRes {
   ok: 1;
   item: Post[];
+  pagination: Pagination;
 }
 
 // 게시물 상세 조회 결과 타입
@@ -88,6 +92,7 @@ export interface PostInfoRes {
 export interface OrderListRes {
   ok: 1;
   item: Order[];
+  pagination: Pagination;
 }
 
 // 주문 상세 조회 결과
@@ -100,6 +105,7 @@ export interface OrderInfoRes {
 export interface BookmarkListRes {
   ok: 1;
   item: Bookmark[];
+  pagination: Pagination;
 }
 
 // 즐겨찾기 상세/등록 결과
@@ -112,6 +118,7 @@ export interface BookmarkInfoRes {
 export interface CartListRes {
   ok: 1;
   item: Cart[];
+  pagination: Pagination;
 }
 
 // 장바구니 아이템 추가/수정 결과
@@ -130,6 +137,7 @@ export interface FileUploadRes {
 export interface CodeListRes {
   ok: 1;
   item: CodeGroup[];
+  pagination: Pagination;
 }
 
 // 특정 코드 그룹 조회 결과 (예: 카테고리만 가져올 때)
@@ -142,10 +150,18 @@ export interface CodeInfoRes {
 export interface ConfigListRes {
   ok: 1;
   item: SystemConfig[];
+  pagination: Pagination;
 }
 
 // 특정 설정 조회 결과 (예: 배송비 정보만 필요할 때)
 export interface ConfigInfoRes {
   ok: 1;
   item: SystemConfig;
+}
+
+export interface Pagination {
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
 }

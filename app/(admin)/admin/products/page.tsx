@@ -1,108 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import {
-  ArrowLeft,
-  MessageCircle,
-  CircleCheckBig,
-  Clock,
+  Package,
+  AlertTriangle,
+  XCircle,
   Search,
   ChevronDown,
   Filter,
-  Eye,
+  Heart,
+  Pencil,
 } from "lucide-react";
-
-// 타입 정의
-interface QnAItem {
-  id: number;
-  question: string;
-  author: string;
-  createdAt: string;
-  views: number;
-  status: "answered" | "pending";
-}
-
-interface ProductInfo {
-  name: string;
-  sku: string;
-  price: number;
-  imageUrl: string;
-}
-
-// 목데이터
-const productInfo: ProductInfo = {
-  name: "Wireless Headphones Pro",
-  sku: "WH-PRO-001",
-  price: 299000,
-  imageUrl: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=100&h=100&fit=crop",
-};
-
-const qnaData: QnAItem[] = [
-  {
-    id: 1,
-    question: "배터리 수명이 얼마나 되나요?",
-    author: "김철수",
-    createdAt: "2026-01-14",
-    views: 45,
-    status: "answered",
-  },
-  {
-    id: 2,
-    question: "iPhone과 호환되나요?",
-    author: "이영희",
-    createdAt: "2026-01-13",
-    views: 78,
-    status: "answered",
-  },
-  {
-    id: 3,
-    question: "노이즈 캔슬링 기능이 있나요?",
-    author: "박민수",
-    createdAt: "2026-01-13",
-    views: 32,
-    status: "pending",
-  },
-  {
-    id: 4,
-    question: "방수 기능이 있나요?",
-    author: "최지은",
-    createdAt: "2026-01-12",
-    views: 56,
-    status: "answered",
-  },
-  {
-    id: 5,
-    question: "보증 기간은 얼마나 되나요?",
-    author: "정현우",
-    createdAt: "2026-01-12",
-    views: 23,
-    status: "pending",
-  },
-  {
-    id: 6,
-    question: "케이스가 포함되어 있나요?",
-    author: "강수진",
-    createdAt: "2026-01-11",
-    views: 89,
-    status: "answered",
-  },
-  {
-    id: 7,
-    question: "색상 옵션이 어떻게 되나요?",
-    author: "윤서연",
-    createdAt: "2026-01-11",
-    views: 41,
-    status: "pending",
-  },
-  {
-    id: 8,
-    question: "유선 연결도 가능한가요?",
-    author: "임동현",
-    createdAt: "2026-01-10",
-    views: 67,
-    status: "answered",
-  },
-];
+import { getProducts } from "@/lib/product";
+import { Product } from "@/types/product";
+import { Pagination } from "@/types/response";
 
 // 통계 카드 컴포넌트
 interface StatCardProps {
@@ -127,52 +39,117 @@ function StatCard({ label, value, icon, bgColor, textColor }: StatCardProps) {
   );
 }
 
-// 상태 배지 컴포넌트
-interface StatusBadgeProps {
-  status: "answered" | "pending";
-}
-
-function StatusBadge({ status }: StatusBadgeProps) {
-  if (status === "answered") {
-    return (
-      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-700">
-        <CircleCheckBig className="w-3 h-3 mr-1" />
-        답변 완료
-      </span>
-    );
-  }
-
-  return (
-    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-700">
-      <Clock className="w-3 h-3 mr-1" />
-      답변 대기
-    </span>
-  );
-}
-
 // 메인 페이지 컴포넌트
-export default function ProductQnAPage() {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [statusFilter, setStatusFilter] = useState<"all" | "answered" | "pending">("all");
-  const [currentPage, setCurrentPage] = useState(1);
+export default function ProductListPage() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
-  // 통계 계산
-  const totalQuestions = qnaData.length;
-  const answeredCount = qnaData.filter((q) => q.status === "answered").length;
-  const pendingCount = qnaData.filter((q) => q.status === "pending").length;
+  const [products, setProducts] = useState<Product[]>([]);
+  const [pagination, setPagination] = useState<Pagination | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  // 필터링된 데이터
-  const filteredData = qnaData.filter((item) => {
-    const matchesSearch =
-      item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      item.author.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesStatus = statusFilter === "all" || item.status === statusFilter;
-    return matchesSearch && matchesStatus;
+  // 통계용 상태
+  const [stats, setStats] = useState({
+    total: 0,
+    lowStock: 0,
+    outOfStock: 0,
   });
 
-  // 가격 포맷
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("ko-KR").format(price) + "원";
+  // 디바운스용 useEffect 삭제하고, searchInput만 유지
+  const [searchInput, setSearchInput] = useState(searchParams.get("keyword") || "");
+
+  // 검색 버튼 클릭 핸들러
+  const handleSearch = () => {
+    updateParams({ keyword: searchInput, page: "1" });
+  };
+
+  // 엔터키 검색
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  // URL 파라미터에서 현재 값 읽기
+  const keyword = searchParams.get("keyword") || "";
+  const category = searchParams.get("category") || "all";
+  const page = Number(searchParams.get("page")) || 1;
+
+  // 상품 목록 조회
+  const fetchProducts = async () => {
+    setLoading(true);
+
+    const res = await getProducts({
+      keyword: keyword || undefined,
+      custom: category !== "all" ? { "extra.category": category } : undefined,
+      page,
+      limit: 10,
+      sort: { createdAt: -1 },
+      showSoldOut: true,
+    });
+
+    if (res.ok) {
+      setProducts(res.item);
+      setPagination(res.pagination);
+    }
+
+    setLoading(false);
+  };
+
+  // 통계 조회 (전체 상품 기준)
+  const fetchStats = async () => {
+    const res = await getProducts({
+      limit: 9999, // 전체 조회
+      showSoldOut: true,
+    });
+
+    if (res.ok) {
+      const total = res.pagination.total;
+      const lowStock = res.item.filter(
+        (p: Product) => p.quantity - p.buyQuantity > 0 && p.quantity - p.buyQuantity <= 10,
+      ).length;
+      const outOfStock = res.item.filter((p: Product) => p.quantity - p.buyQuantity === 0).length;
+
+      setStats({ total, lowStock, outOfStock });
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, [keyword, category, page]);
+
+  useEffect(() => {
+    fetchStats();
+  }, []);
+
+  // URL 파라미터 업데이트 함수
+  const updateParams = (updates: Record<string, string>) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    Object.entries(updates).forEach(([key, value]) => {
+      if (value) {
+        params.set(key, value);
+      } else {
+        params.delete(key);
+      }
+    });
+
+    router.push(`?${params.toString()}`);
+  };
+
+  // 카테고리 변경 핸들러
+  const handleCategoryChange = (value: string) => {
+    updateParams({ category: value === "all" ? "" : value, page: "1" });
+  };
+
+  // 페이지 변경 핸들러
+  const handlePageChange = (newPage: number) => {
+    updateParams({ page: String(newPage) });
+  };
+
+  // 날짜 포맷
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString("ko-KR");
   };
 
   return (
@@ -181,8 +158,8 @@ export default function ProductQnAPage() {
       <div className="mb-6">
         <div className="flex items-center mb-4">
           <div>
-            <h1 className="text-3xl font-semibold text-gray-900">제품 목록</h1>
-            <p className="mt-1 text-sm text-gray-600">제품에 대한 정보를 관리하세요</p>
+            <h1 className="text-3xl font-semibold text-gray-900">상품 목록</h1>
+            <p className="mt-1 text-sm text-gray-600">등록된 상품을 관리하세요</p>
           </div>
         </div>
       </div>
@@ -190,33 +167,33 @@ export default function ProductQnAPage() {
       {/* 통계 카드 */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
         <StatCard
-          label="전체 문의"
-          value={totalQuestions}
-          icon={<MessageCircle className="w-6 h-6 text-blue-600" />}
+          label="전체 상품"
+          value={stats.total}
+          icon={<Package className="w-6 h-6 text-blue-600" />}
           bgColor="bg-blue-100"
           textColor="text-gray-900"
         />
         <StatCard
-          label="답변 완료"
-          value={answeredCount}
-          icon={<CircleCheckBig className="w-6 h-6 text-green-600" />}
-          bgColor="bg-green-100"
-          textColor="text-green-600"
-        />
-        <StatCard
-          label="답변 대기"
-          value={pendingCount}
-          icon={<Clock className="w-6 h-6 text-orange-600" />}
+          label="재고 10개 이하"
+          value={stats.lowStock}
+          icon={<AlertTriangle className="w-6 h-6 text-orange-600" />}
           bgColor="bg-orange-100"
           textColor="text-orange-600"
         />
+        <StatCard
+          label="재고 없음"
+          value={stats.outOfStock}
+          icon={<XCircle className="w-6 h-6 text-red-600" />}
+          bgColor="bg-red-100"
+          textColor="text-red-600"
+        />
       </div>
 
-      {/* Q&A 테이블 */}
+      {/* 상품 테이블 */}
       <div className="bg-white rounded-lg shadow">
         {/* 필터 영역 */}
         <div className="p-6 border-b border-gray-200">
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:items-center sm:flex-row gap-4">
             {/* 검색 입력 */}
             <div className="flex-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -224,23 +201,33 @@ export default function ProductQnAPage() {
               </div>
               <input
                 type="text"
-                placeholder="질문 또는 작성자 검색..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="상품명 검색..."
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+                onKeyDown={handleKeyDown}
                 className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
 
-            {/* 상태 필터 */}
+            {/* 검색 버튼 */}
+            <button
+              onClick={handleSearch}
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              <Search className="w-5 h-5 mr-2" />
+              <span>검색</span>
+            </button>
+
+            {/* 카테고리 필터 */}
             <div className="relative">
               <select
-                value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value as "all" | "answered" | "pending")}
+                value={category}
+                onChange={(e) => handleCategoryChange(e.target.value)}
                 className="appearance-none px-4 py-2 pr-10 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
-                <option value="all">전체 상태</option>
-                <option value="answered">답변 완료</option>
-                <option value="pending">답변 대기</option>
+                <option value="all">전체 카테고리</option>
+                <option value="사료">사료</option>
+                <option value="간식">간식</option>
               </select>
               <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
             </div>
@@ -262,95 +249,112 @@ export default function ProductQnAPage() {
                   번호
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  질문
+                  상품명
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  작성자
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  종류
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  작성일
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  코드명
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  조회수
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  재고
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  상태
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  등록일
                 </th>
-                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                   작업
                 </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {filteredData.map((item) => (
-                <tr key={item.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">#{item.id}</td>
-                  <td className="px-6 py-4 text-sm text-gray-900 max-w-md">
-                    <div className="flex items-center">
-                      <MessageCircle className="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" />
-                      <span className="truncate">{item.question}</span>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
-                    {item.author}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {item.createdAt}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    <div className="flex items-center">
-                      <Eye className="w-4 h-4 text-gray-400 mr-1" />
-                      {item.views}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <StatusBadge status={item.status} />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm">
-                    <button className="text-blue-600 hover:text-blue-800 inline-flex items-center">
-                      <span className="mr-1">상세보기</span>
-                      <ChevronDown className="w-4 h-4" />
-                    </button>
+              {loading ? (
+                <tr>
+                  <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
+                    로딩 중...
                   </td>
                 </tr>
-              ))}
+              ) : products.length === 0 ? (
+                <tr>
+                  <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
+                    상품이 없습니다.
+                  </td>
+                </tr>
+              ) : (
+                products.map((item) => (
+                  <tr key={item._id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                      #{item._id}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-900 max-w-md">
+                      <div className="flex items-center">
+                        <Package className="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" />
+                        <span className="truncate">{item.name}</span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-900 max-w-md">
+                      <div className="flex justify-center items-center">
+                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600">
+                          사료 {/* 간식추가시 수정 */}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                      {item.extra?.code || ""}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                      {item.quantity - item.buyQuantity || ""}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                      {formatDate(item.createdAt)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm">
+                      <button className="text-blue-600 hover:text-blue-800 inline-flex items-center px-3 py-1.5 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
+                        <Pencil className="w-4 h-4 mr-1" />
+                        <span>수정</span>
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
 
         {/* 페이지네이션 */}
         <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-          <p className="text-sm text-gray-500">총 {filteredData.length}개의 문의</p>
+          <p className="text-sm text-gray-500">총 {pagination?.total || 0}개의 상품</p>
           <div className="flex space-x-2">
             <button
-              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              className="px-3 py-1 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50"
+              onClick={() => handlePageChange(page - 1)}
+              disabled={page <= 1}
+              className="px-3 py-1 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               이전
             </button>
+
+            {pagination &&
+              Array.from({ length: Math.min(pagination.totalPages, 5) }, (_, i) => i + 1).map(
+                (pageNum) => (
+                  <button
+                    key={pageNum}
+                    onClick={() => handlePageChange(pageNum)}
+                    className={`px-3 py-1 rounded-lg text-sm ${
+                      page === pageNum
+                        ? "bg-blue-600 text-white hover:bg-blue-700"
+                        : "border border-gray-300 text-gray-700 hover:bg-gray-50"
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                ),
+              )}
+
             <button
-              onClick={() => setCurrentPage(1)}
-              className={`px-3 py-1 rounded-lg text-sm ${
-                currentPage === 1
-                  ? "bg-blue-600 text-white hover:bg-blue-700"
-                  : "border border-gray-300 text-gray-700 hover:bg-gray-50"
-              }`}
-            >
-              1
-            </button>
-            <button
-              onClick={() => setCurrentPage(2)}
-              className={`px-3 py-1 rounded-lg text-sm ${
-                currentPage === 2
-                  ? "bg-blue-600 text-white hover:bg-blue-700"
-                  : "border border-gray-300 text-gray-700 hover:bg-gray-50"
-              }`}
-            >
-              2
-            </button>
-            <button
-              onClick={() => setCurrentPage((prev) => prev + 1)}
-              className="px-3 py-1 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50"
+              onClick={() => handlePageChange(page + 1)}
+              disabled={!pagination || page >= pagination.totalPages}
+              className="px-3 py-1 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               다음
             </button>

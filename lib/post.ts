@@ -43,7 +43,6 @@ export async function getPosts(options: GetPostsOptions): Promise<PostListRes | 
       headers: {
         "Client-Id": CLIENT_ID,
       },
-      cache: "force-cache",
       next: {
         tags: [`posts?type=${boardType}`],
       },
