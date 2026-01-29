@@ -3,13 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import type { ProductListRes, ErrorRes } from "@/types/response";
 
-const API_URL = "https://fesp-api.koyeb.app/market";
-const CLIENT_ID = "febc15-final06-ecad";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || "";
 
 interface Props {
   searchParams: Promise<{
     page?: string;
     lifeStage?: string;
+    category?: string;
+    type?: string;
   }>;
 }
 
@@ -17,11 +19,25 @@ export async function getProducts(
   page: number = 1,
   limit: number = 8,
   lifeStage?: string,
+  category?: string,
+  type?: string,
 ): Promise<ProductListRes | ErrorRes> {
   try {
     let url = `${API_URL}/products?page=${page}&limit=${limit}`;
+
+    const custom: Record<string, string> = {};
+
     if (lifeStage) {
-      url += `&custom={"extra.lifeStage":"${lifeStage}"}`;
+      custom["extra.lifeStage"] = lifeStage;
+    }
+    if (category) {
+      custom["extra.category"] = category;
+    }
+    if (type) {
+      custom["extra.type"] = type;
+    }
+    if (Object.keys(custom).length > 0) {
+      url += `&custom=${JSON.stringify(custom)}`;
     }
 
     const res = await fetch(url, {
@@ -41,10 +57,10 @@ export async function getProducts(
 }
 
 export default async function Products({ searchParams }: Props) {
-  const { page, lifeStage } = await searchParams;
+  const { page, lifeStage, category, type } = await searchParams;
   const currentPage = Number(page) || 1;
 
-  const data = await getProducts(currentPage, 8, lifeStage);
+  const data = await getProducts(currentPage, 8, lifeStage, category, type);
 
   if (data.ok === 0) {
     return <div>{data.message}</div>;
@@ -74,7 +90,11 @@ export default async function Products({ searchParams }: Props) {
               { label: "시니어 (Senior)", value: "시니어" },
             ].map((filter) => {
               const isActive = lifeStage === filter.value || (!lifeStage && filter.value === "");
-              const href = filter.value ? `/products?lifeStage=${filter.value}` : "/products";
+              const params = new URLSearchParams();
+              if (filter.value) params.set("lifeStage", filter.value);
+              if (category) params.set("category", category);
+              if (type) params.set("type", type);
+              const href = params.toString() ? `/products?${params.toString()}` : "/products";
 
               return (
                 <Link
@@ -106,7 +126,10 @@ export default async function Products({ searchParams }: Props) {
                 key={product._id}
                 className="flex w-[calc(25%-21px)] min-w-62.5 flex-col overflow-hidden rounded-3xl sm:rounded-[2.1875rem] border border-black/10 bg-white"
               >
-                <Link href={`/products/${product._id}`} className="flex w-full flex-col no-underline">
+                <Link
+                  href={`/products/${product._id}`}
+                  className="flex w-full flex-col no-underline"
+                >
                   <div className="flex aspect-square w-full items-center justify-center bg-white">
                     <Image
                       src={product.mainImages[0]?.path || "/placeholder.png"}
