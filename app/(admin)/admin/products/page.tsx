@@ -2,86 +2,40 @@
 
 import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import {
-  Package,
-  AlertTriangle,
-  XCircle,
-  Search,
-  ChevronDown,
-  Filter,
-  Heart,
-  Pencil,
-} from "lucide-react";
+import { Package, AlertTriangle, XCircle, Pencil } from "lucide-react";
 import { getProducts } from "@/lib/product";
 import { Product } from "@/types/product";
-import { Pagination } from "@/types/response";
+import { Pagination as PaginationType } from "@/types/response";
+import StatCard from "@/app/(admin)/admin/_components/StatCard";
+import SearchFilter from "@/app/(admin)/admin/_components/SearchFilter";
+import Pagination from "@/app/(admin)/admin/_components/Pagination";
 
-// 통계 카드 컴포넌트
-interface StatCardProps {
-  label: string;
-  value: number;
-  icon: React.ReactNode;
-  bgColor: string;
-  textColor: string;
-}
-
-function StatCard({ label, value, icon, bgColor, textColor }: StatCardProps) {
-  return (
-    <div className="bg-white rounded-lg shadow p-5">
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm text-gray-600 mb-1">{label}</p>
-          <p className={`text-2xl font-semibold ${textColor}`}>{value}</p>
-        </div>
-        <div className={`p-3 ${bgColor} rounded-lg`}>{icon}</div>
-      </div>
-    </div>
-  );
-}
-
-// 메인 페이지 컴포넌트
 export default function ProductListPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
   const [products, setProducts] = useState<Product[]>([]);
-  const [pagination, setPagination] = useState<Pagination | null>(null);
+  const [pagination, setPagination] = useState<PaginationType | null>(null);
   const [loading, setLoading] = useState(false);
 
-  // 통계용 상태
   const [stats, setStats] = useState({
     total: 0,
     lowStock: 0,
     outOfStock: 0,
   });
 
-  // 디바운스용 useEffect 삭제하고, searchInput만 유지
   const [searchInput, setSearchInput] = useState(searchParams.get("keyword") || "");
 
-  // 검색 버튼 클릭 핸들러
-  const handleSearch = () => {
-    updateParams({ keyword: searchInput, page: "1" });
-  };
-
-  // 엔터키 검색
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  };
-
-  // URL 파라미터에서 현재 값 읽기
   const keyword = searchParams.get("keyword") || "";
   const category = searchParams.get("category") || "all";
   const page = Number(searchParams.get("page")) || 1;
 
-  // 상품 목록 조회
   const fetchProducts = async () => {
     setLoading(true);
 
     const res = await getProducts({
       keyword: keyword || undefined,
-      custom: category !== "all" ? { "extra.category": category } : undefined,
+      custom: category !== "all" ? { "extra.type": category } : undefined,
       page,
       limit: 10,
       sort: { createdAt: -1 },
@@ -96,10 +50,9 @@ export default function ProductListPage() {
     setLoading(false);
   };
 
-  // 통계 조회 (전체 상품 기준)
   const fetchStats = async () => {
     const res = await getProducts({
-      limit: 9999, // 전체 조회
+      limit: 9999,
       showSoldOut: true,
     });
 
@@ -122,7 +75,6 @@ export default function ProductListPage() {
     fetchStats();
   }, []);
 
-  // URL 파라미터 업데이트 함수
   const updateParams = (updates: Record<string, string>) => {
     const params = new URLSearchParams(searchParams.toString());
 
@@ -137,20 +89,33 @@ export default function ProductListPage() {
     router.push(`?${params.toString()}`);
   };
 
-  // 카테고리 변경 핸들러
+  const handleSearch = () => {
+    updateParams({ keyword: searchInput, page: "1" });
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   const handleCategoryChange = (value: string) => {
     updateParams({ category: value === "all" ? "" : value, page: "1" });
   };
 
-  // 페이지 변경 핸들러
   const handlePageChange = (newPage: number) => {
     updateParams({ page: String(newPage) });
   };
 
-  // 날짜 포맷
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("ko-KR");
   };
+
+  const filterOptions = [
+    { value: "all", label: "전체 카테고리" },
+    { value: "사료", label: "사료" },
+    { value: "간식", label: "간식" },
+  ];
 
   return (
     <>
@@ -191,54 +156,17 @@ export default function ProductListPage() {
 
       {/* 상품 테이블 */}
       <div className="bg-white rounded-lg shadow">
-        {/* 필터 영역 */}
-        <div className="p-6 border-b border-gray-200">
-          <div className="flex flex-col sm:items-center sm:flex-row gap-4">
-            {/* 검색 입력 */}
-            <div className="flex-1 relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
-              </div>
-              <input
-                type="text"
-                placeholder="상품명 검색..."
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-
-            {/* 검색 버튼 */}
-            <button
-              onClick={handleSearch}
-              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              <Search className="w-5 h-5 mr-2" />
-              <span>검색</span>
-            </button>
-
-            {/* 카테고리 필터 */}
-            <div className="relative">
-              <select
-                value={category}
-                onChange={(e) => handleCategoryChange(e.target.value)}
-                className="appearance-none px-4 py-2 pr-10 border border-gray-300 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              >
-                <option value="all">전체 카테고리</option>
-                <option value="사료">사료</option>
-                <option value="간식">간식</option>
-              </select>
-              <ChevronDown className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
-            </div>
-
-            {/* 필터 버튼 */}
-            <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-              <Filter className="w-5 h-5 mr-2 text-gray-600" />
-              <span className="text-gray-700">필터</span>
-            </button>
-          </div>
-        </div>
+        {/* 검색/필터 영역 */}
+        <SearchFilter
+          searchValue={searchInput}
+          onSearchChange={setSearchInput}
+          onSearch={handleSearch}
+          onKeyDown={handleKeyDown}
+          searchPlaceholder="상품명 검색..."
+          filterValue={category}
+          onFilterChange={handleCategoryChange}
+          filterOptions={filterOptions}
+        />
 
         {/* 테이블 */}
         <div className="overflow-x-auto">
@@ -271,95 +199,78 @@ export default function ProductListPage() {
             <tbody className="bg-white divide-y divide-gray-200">
               {loading ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
+                  <td colSpan={7} className="px-6 py-12 text-center text-gray-500">
                     로딩 중...
                   </td>
                 </tr>
               ) : products.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-12 text-center text-gray-500">
+                  <td colSpan={7} className="px-6 py-12 text-center text-gray-500">
                     상품이 없습니다.
                   </td>
                 </tr>
               ) : (
-                products.map((item) => (
-                  <tr key={item._id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      #{item._id}
-                    </td>
-                    <td className="px-6 py-4 text-sm text-gray-900 max-w-md">
-                      <div className="flex items-center">
-                        <Package className="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" />
-                        <span className="truncate">{item.name}</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-sm text-gray-900 max-w-md">
-                      <div className="flex justify-center items-center">
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600">
-                          사료 {/* 간식추가시 수정 */}
+                products.map((item) => {
+                  const stock = item.quantity - item.buyQuantity;
+                  const getStockStyle = () => {
+                    if (stock === 0) return "bg-red-100 text-red-600";
+                    if (stock <= 10) return "bg-orange-100 text-orange-600";
+                    return "bg-green-100 text-green-600";
+                  };
+
+                  return (
+                    <tr key={item._id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        #{item._id}
+                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-900 max-w-md">
+                        <div className="flex items-center">
+                          <Package className="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" />
+                          <span className="truncate">{item.name}</span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 text-sm text-gray-900">
+                        <div className="flex justify-center items-center">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600">
+                            {item.extra?.category || "미분류"}
+                          </span>
+                        </div>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                        {item.extra?.code || "-"}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-center text-sm">
+                        <span
+                          className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${getStockStyle()}`}
+                        >
+                          {stock}
                         </span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
-                      {item.extra?.code || ""}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
-                      {item.quantity - item.buyQuantity || ""}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
-                      {formatDate(item.createdAt)}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-center text-sm">
-                      <button className="text-blue-600 hover:text-blue-800 inline-flex items-center px-3 py-1.5 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
-                        <Pencil className="w-4 h-4 mr-1" />
-                        <span>수정</span>
-                      </button>
-                    </td>
-                  </tr>
-                ))
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                        {formatDate(item.createdAt)}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-center text-sm">
+                        <button className="text-blue-600 hover:text-blue-800 inline-flex items-center px-3 py-1.5 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
+                          <Pencil className="w-4 h-4 mr-1" />
+                          <span>수정</span>
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
               )}
             </tbody>
           </table>
         </div>
 
         {/* 페이지네이션 */}
-        <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
-          <p className="text-sm text-gray-500">총 {pagination?.total || 0}개의 상품</p>
-          <div className="flex space-x-2">
-            <button
-              onClick={() => handlePageChange(page - 1)}
-              disabled={page <= 1}
-              className="px-3 py-1 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              이전
-            </button>
-
-            {pagination &&
-              Array.from({ length: Math.min(pagination.totalPages, 5) }, (_, i) => i + 1).map(
-                (pageNum) => (
-                  <button
-                    key={pageNum}
-                    onClick={() => handlePageChange(pageNum)}
-                    className={`px-3 py-1 rounded-lg text-sm ${
-                      page === pageNum
-                        ? "bg-blue-600 text-white hover:bg-blue-700"
-                        : "border border-gray-300 text-gray-700 hover:bg-gray-50"
-                    }`}
-                  >
-                    {pageNum}
-                  </button>
-                ),
-              )}
-
-            <button
-              onClick={() => handlePageChange(page + 1)}
-              disabled={!pagination || page >= pagination.totalPages}
-              className="px-3 py-1 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              다음
-            </button>
-          </div>
-        </div>
+        <Pagination
+          currentPage={page}
+          totalPages={pagination?.totalPages || 1}
+          totalCount={pagination?.total || 0}
+          onPageChange={handlePageChange}
+          label="개의 상품"
+        />
       </div>
     </>
   );
