@@ -20,6 +20,7 @@ import { Post } from "@/types/post";
 import { getOrders } from "@/lib/order";
 import { getUsers } from "@/lib/user";
 import { getOrderStatistics } from "@/lib/statistics";
+import useUserStore from "@/app/(main)/(auth)/login/zustand/useStore";
 
 // 가격 포맷
 const formatPrice = (price: number) => {
@@ -99,6 +100,10 @@ export default function AdminDashboardPage() {
   const [lowStockProducts, setLowStockProducts] = useState<Product[]>([]);
   const [recentOrders, setRecentOrders] = useState<Order[]>([]);
 
+  // console.log(useUserStore.getState());
+  const token = useUserStore.getState().user?.token?.accessToken;
+  // console.log(token);
+
   useEffect(() => {
     fetchDashboardData();
   }, []);
@@ -106,7 +111,12 @@ export default function AdminDashboardPage() {
   const fetchDashboardData = async () => {
     setLoading(true);
 
+    if (!token) {
+      // return alert("재로그인이 필요합니다");
+    }
+
     // 1. 주문 통계 (총 판매금액 + 총 주문건수)
+    // const statsRes = await getOrderStatistics(token, { start: "2026.01.01" });
     const statsRes = await getOrderStatistics({ start: "2026.01.01" });
     let totalSales = 0;
     let totalOrders = 0;

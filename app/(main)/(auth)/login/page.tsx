@@ -23,16 +23,16 @@ export default function Login() {
     console.log(checkedState);
   }, [checkedState]);
 
-  useEffect(() => {
-    if (userState?.ok === 1) {
-      if (checkedState) {
-        localStorage.setItem("sessionStorage", userState.item.token.accessToken);
-      }
-      if (!checkedState) {
-        sessionStorage.setItem("sessionStorage", userState.item.token.accessToken);
-      }
-    }
-  }, [userState, checkedState]);
+  // useEffect(() => {
+  //   if (userState?.ok === 1) {
+  //     if (checkedState) {
+  //       localStorage.setItem("sessionStorage", userState.item.token.accessToken);
+  //     }
+  //     if (!checkedState) {
+  //       sessionStorage.setItem("sessionStorage", userState.item.token.accessToken);
+  //     }
+  //   }
+  // }, [userState, checkedState]);
   const router = useRouter();
   const redirect = useSearchParams().get("redirect");
   const setUser = useUserStore((state) => state.setUser);
@@ -57,10 +57,13 @@ export default function Login() {
         },
       });
       console.log(userState.item._id);
+      console.log("setUser 후:", useUserStore.getState());
       alert(`${userState.item.name}님 로그인이 완료되었습니다.`);
-      router.replace(redirect || "/");
+      setTimeout(() => {
+        router.replace(redirect || "/");
+      }, 100);
     }
-  }, [userState, router, redirect, setUser]);
+  }, [userState, router, redirect, setUser, checkedState]);
 
   return (
     <>

@@ -32,6 +32,7 @@ interface GetOrderStatisticsOptions {
  * getOrderStatistics({ custom: { "cost.total": { $gte: 40000 } } });
  */
 export async function getOrderStatistics(
+  // token: string, // 토큰값 필수
   options?: GetOrderStatisticsOptions,
 ): Promise<OrderStatisticsRes | ErrorRes> {
   try {
@@ -51,11 +52,14 @@ export async function getOrderStatistics(
       ? `${API_URL}/admin/statistics/orders?${queryString}`
       : `${API_URL}/admin/statistics/orders`;
 
-    const res = await fetch(url, {
-      headers: {
-        "Client-Id": CLIENT_ID,
-      },
-    });
+    const headers: HeadersInit = {
+      "Client-Id": CLIENT_ID,
+    };
+    // if (token) {
+    //   headers["Authorization"] = `Bearer ${token}`;
+    // }
+
+    const res = await fetch(url, { headers });
 
     return res.json();
   } catch (error) {
