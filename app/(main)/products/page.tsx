@@ -130,13 +130,13 @@ export default async function Products({ searchParams }: Props) {
                   href={`/products/${product._id}`}
                   className="flex w-full flex-col no-underline"
                 >
-                  <div className="flex aspect-square w-full items-center justify-center bg-white">
+                  <div className="flex aspect-square w-full items-center justify-center overflow-hidden bg-white">
                     <Image
                       src={product.mainImages[0]?.path || "/placeholder.png"}
                       alt={product.name}
                       width={280}
                       height={280}
-                      className="block h-full w-full object-contain"
+                      className="block h-full w-full object-contain transition-transform duration-300 ease-in-out hover:scale-110"
                     />
                   </div>
 
