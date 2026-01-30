@@ -9,42 +9,58 @@ const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || "";
 
 type ActionState = PostInfoRes | ErrorRes | null;
 
-// 파일 업로드
-
 export async function uploadFiles(
   prevState: ActionState,
   formData: FormData,
 ): Promise<ActionState> {
   const accessToken = formData.get("accessToken") as string;
-  const postType = formData.get("type") as string;
 
-  // 보안을 위해 토큰을 본문에서 삭제
+  if (!accessToken) {
+    redirect("/login");
+  }
+
   formData.delete("accessToken");
 
-  let res: Response;
+  let redirectTo: string | null = null; // 리다이렉트할 경로를 저장할 변수
 
   try {
-    res = await fetch(`${API_URL}/posts`, {
+    const res = await fetch(`${API_URL}/posts`, {
       method: "POST",
       headers: {
-        // "Content-Type": "application/json",
         "Client-Id": CLIENT_ID,
         Authorization: `Bearer ${accessToken}`,
       },
       body: formData,
     });
 
-    const data: PostInfoRes | ErrorRes = await res.json();
+    console.log(res);
 
-    if (res.ok && data.ok === 1) {
-      revalidatePath("/mypage/profile");
-      return data as PostInfoRes;
+    // 401 에러(토큰 만료) 처리
+    if (res.status === 401) {
+      redirectTo = "/login";
     } else {
-      // 실패 시 서버에서 온 ErrorRes(ok, message, errors)를 그대로 반환
-      return data as ErrorRes;
+      const data: PostInfoRes | ErrorRes = await res.json();
+
+      if (res.ok && data.ok === 1) {
+        revalidatePath("/mypage/profile");
+        redirectTo = "/mypage/profile"; // 성공 시 이동할 경로
+      } else {
+        return data as ErrorRes; // 실패 시 에러 객체 반환 (함수 종료)
+      }
     }
   } catch (error) {
+    // 만약 error가 Next.js의 리다이렉트 에러라면 다시 던져줘야 함
+    if (error instanceof Error && error.message === "NEXT_REDIRECT") {
+      throw error;
+    }
     console.error(error);
-    return { ok: 0, message: "네트워크 에러 발생" }; // 최소한의 에러 객체 반환
+    return { ok: 0, message: "네트워크 에러 발생" };
   }
+
+  // 모든 try...catch가 끝난 후 마지막에 리다이렉트 실행
+  if (redirectTo) {
+    redirect(redirectTo);
+  }
+
+  return null; // 기본 반환값
 }
