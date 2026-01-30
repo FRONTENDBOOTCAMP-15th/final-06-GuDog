@@ -40,7 +40,7 @@ export default function Profile({ token }: { token: string }) {
         <p className="pt-[14px] pb-[42px] text-[#646468] font-['Pretendard'] text-[14px] font-[500]">
           서비스 이용을 위한 소중한 정보를 안전하게 관리하세요.
         </p>
-        <form action={formAction}>
+        <form action={formAction} className="w-full max-w-[672px]">
           <div className=" mb-[161px] pr-[55px] pl-[57px] pt-[56px] pb-[70px] rounded-[49px] border border-black/[0.06] bg-[#FFF] shadow-[0_4px_24px_-4px_rgba(0,0,0,0.04),0_0_0_1px_rgba(0,0,0,0.02)] max-lg:pl-[30px] max-lg:pr-[30px] w-full max-w-[672px]">
             <div className="flex flex-col">
               <div className="flex flex-col  items-center">
