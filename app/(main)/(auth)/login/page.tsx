@@ -7,8 +7,8 @@ import Checkbox from "@/components/common/Checkbox";
 import Input from "@/components/common/Input";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { HTMLInputTypeAttribute, useActionState, useEffect, useState } from "react";
+import { redirect, useRouter } from "next/navigation";
+import { useActionState, useEffect, useState } from "react";
 import { createJSONStorage } from "zustand/middleware";
 
 export default function Login() {
@@ -34,7 +34,6 @@ export default function Login() {
   //   }
   // }, [userState, checkedState]);
   const router = useRouter();
-  const redirect = useSearchParams().get("redirect");
   const setUser = useUserStore((state) => state.setUser);
 
   useEffect(() => {
@@ -59,9 +58,7 @@ export default function Login() {
       console.log(userState.item._id);
       console.log("setUser 후:", useUserStore.getState());
       alert(`${userState.item.name}님 로그인이 완료되었습니다.`);
-      setTimeout(() => {
-        router.replace(redirect || "/");
-      }, 100);
+      redirect("/");
     }
   }, [userState, router, redirect, setUser, checkedState]);
 

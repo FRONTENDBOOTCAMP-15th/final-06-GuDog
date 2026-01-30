@@ -9,10 +9,18 @@ import type { FileInfo } from "@/types/file";
 import type { CodeGroup } from "@/types/codes";
 import type { SystemConfig } from "@/types/config";
 
+export interface Pagination {
+  page: number;
+  limit: number;
+  total: number;
+  totalPages: number;
+}
+
 // 회원 정보 상세 조회 결과 (단일 사용자)
 export interface UserInfoRes {
   ok: 1;
   item: User;
+  pagination: Pagination;
 }
 
 // 회원 목록 조회 결과 (여러 사용자)
@@ -31,6 +39,7 @@ export interface LoginRes {
       refreshToken: string;
     };
   };
+  pagination: Pagination;
 }
 
 // 공통 에러 타입 (예시 유지)
@@ -60,6 +69,7 @@ export interface ReviewListRes {
 export interface ReviewInfoRes {
   ok: 1;
   item: Review;
+  pagination: Pagination;
 }
 
 // 상품 목록 조회 결과
@@ -73,6 +83,7 @@ export interface ProductListRes {
 export interface ProductInfoRes {
   ok: 1;
   item: Product;
+  pagination: Pagination;
 }
 
 // 게시물 목록 조회 결과 타입
@@ -86,6 +97,7 @@ export interface PostListRes {
 export interface PostInfoRes {
   ok: 1;
   item: Post;
+  pagination: Pagination;
 }
 
 // 주문 목록 조회 결과
@@ -99,6 +111,7 @@ export interface OrderListRes {
 export interface OrderInfoRes {
   ok: 1;
   item: Order;
+  pagination: Pagination;
 }
 
 // 즐겨찾기 목록 조회 결과
@@ -112,6 +125,7 @@ export interface BookmarkListRes {
 export interface BookmarkInfoRes {
   ok: 1;
   item: Bookmark;
+  pagination: Pagination;
 }
 
 // 장바구니 목록 조회 결과
@@ -125,12 +139,14 @@ export interface CartListRes {
 export interface CartItemRes {
   ok: 1;
   item: Cart;
+  pagination: Pagination;
 }
 
 // 파일 업로드 결과 타입 (단일 또는 다중)
 export interface FileUploadRes {
   ok: 1;
   item: FileInfo[];
+  pagination: Pagination;
 }
 
 // 코드 목록 조회 결과 (여러 그룹을 가져올 때)
@@ -144,6 +160,7 @@ export interface CodeListRes {
 export interface CodeInfoRes {
   ok: 1;
   item: CodeGroup;
+  pagination: Pagination;
 }
 
 // 설정 목록 조회 결과
@@ -157,7 +174,34 @@ export interface ConfigListRes {
 export interface ConfigInfoRes {
   ok: 1;
   item: SystemConfig;
+  pagination: Pagination;
 }
+
+// 서버의 응답
+
+export type ResDate<
+  T extends
+    | UserInfoRes
+    | UserListRes
+    | LoginRes
+    | ReviewListRes
+    | ReviewInfoRes
+    | ProductListRes
+    | ProductInfoRes
+    | PostListRes
+    | PostInfoRes
+    | OrderListRes
+    | OrderInfoRes
+    | BookmarkListRes
+    | BookmarkInfoRes
+    | CartListRes
+    | CartItemRes
+    | FileUploadRes
+    | CodeListRes
+    | CodeInfoRes
+    | ConfigListRes
+    | ConfigInfoRes,
+> = T | ErrorRes;
 
 // 주문량 조회 결과
 export interface OrderStatisticsRes {
