@@ -1,14 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
-import { MessageCircle, CircleCheckBig, Clock, Eye, ChevronRight } from "lucide-react";
-import { Pagination as PaginationType } from "@/types/response";
+import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { MessageCircle, CircleCheckBig, Clock, ChevronRight } from "lucide-react";
 import StatCard from "@/app/(admin)/admin/_components/StatCard";
 import SearchFilter from "@/app/(admin)/admin/_components/SearchFilter";
 import Pagination from "@/app/(admin)/admin/_components/Pagination";
 import { getPosts } from "@/lib/post";
-import { Post } from "@/types/post";
+import { useQuery } from "@tanstack/react-query";
+import { useUrlParams } from "@/hooks/useUrlParams";
 
 // 상태 뱃지 컴포넌트
 interface StatusBadgeProps {
@@ -36,18 +36,6 @@ function StatusBadge({ status }: StatusBadgeProps) {
 // 메인 페이지 컴포넌트
 export default function QnAListPage() {
   const searchParams = useSearchParams();
-  const router = useRouter();
-
-  const [qnaList, setQnaList] = useState<Post[]>([]);
-  const [pagination, setPagination] = useState<PaginationType | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  // 통계용 상태
-  const [stats, setStats] = useState({
-    total: 0,
-    answered: 0,
-    pending: 0,
-  });
 
   // 검색 입력 상태
   const [searchInput, setSearchInput] = useState(searchParams.get("keyword") || "");
@@ -59,75 +47,50 @@ export default function QnAListPage() {
   const sort = searchParams.get("sort") || '{"createdAt":-1}';
 
   // QnA 목록 조회
-  const fetchQnAs = async () => {
-    setLoading(true);
+  const { data: resQnas, isLoading } = useQuery({
+    queryKey: ["admin", "qna", keyword, status, page, sort],
+    queryFn: () => {
+      let custom: Record<string, unknown> | undefined;
+      if (status === "answered") {
+        custom = { "replies.0": { $exists: true } };
+      } else if (status === "pending") {
+        custom = { "replies.0": { $exists: false } };
+      }
 
-    let custom: Record<string, unknown> | undefined;
-    if (status === "answered") {
-      custom = { "replies.0": { $exists: true } };
-    } else if (status === "pending") {
-      custom = { "replies.0": { $exists: false } };
-    }
-
-    console.log(status);
-
-    const res = await getPosts({
-      boardType: "qna",
-      keyword: keyword || undefined,
-      page,
-      custom,
-      limit: 10,
-      sort: JSON.parse(sort),
-    });
-
-    console.log(res);
-
-    if (res.ok) {
-      setQnaList(res.item);
-      setPagination(res.pagination);
-    }
-
-    setLoading(false);
-  };
+      return getPosts({
+        boardType: "qna",
+        keyword: keyword || undefined,
+        page,
+        custom,
+        limit: 10,
+        sort: JSON.parse(sort),
+      });
+    },
+  });
 
   // 통계 조회
-  const fetchStats = async () => {
-    const res = await getPosts({
-      boardType: "qna",
-      limit: 9999,
-    });
+  const { data: statsData } = useQuery({
+    queryKey: ["productStats"],
+    queryFn: () =>
+      getPosts({
+        boardType: "qna",
+        limit: 9999,
+      }),
+  });
 
-    if (res.ok) {
-      const total = res.pagination.total;
-      const answered = res.item.filter((q) => (q.repliesCount ?? 0) > 0).length;
-      const pending = res.item.filter((q) => (q.repliesCount ?? 0) === 0).length;
+  // 데이터 사용
+  const qnas = resQnas?.ok === 1 ? resQnas.item : [];
+  const pagination = resQnas?.ok === 1 ? resQnas.pagination : undefined;
 
-      setStats({ total, answered, pending });
-    }
-  };
-
-  useEffect(() => {
-    fetchQnAs();
-  }, [keyword, status, page, sort]);
-
-  useEffect(() => {
-    fetchStats();
-  }, []);
-
-  // URL 파라미터 업데이트 함수
-  const updateParams = (updates: Record<string, string>) => {
-    const params = new URLSearchParams(searchParams.toString());
-
-    Object.entries(updates).forEach(([key, value]) => {
-      if (value) {
-        params.set(key, value);
-      } else {
-        params.delete(key);
+  const stats = statsData?.ok
+    ? {
+        total: statsData.pagination.total,
+        answered: statsData.item.filter((q) => (q.repliesCount ?? 0) > 0).length,
+        pending: statsData.item.filter((q) => (q.repliesCount ?? 0) === 0).length,
       }
-    });
+    : { total: 0, answered: 0, pending: 0 };
 
-    router.push(`?${params.toString()}`);
-  };
+  const { updateParams, getParam } = useUrlParams();
 
   // 검색 핸들러
   const handleSearch = () => {
@@ -219,7 +182,7 @@ export default function QnAListPage() {
           onSearchChange={setSearchInput}
           onSearch={handleSearch}
           onKeyDown={handleKeyDown}
-          searchPlaceholder="질문 또는 작성자 검색..."
+          searchPlaceholder="질문 검색"
           filterValue={status}
           onFilterChange={handleStatusChange}
           filterOptions={filterOptions}
@@ -254,20 +217,20 @@ export default function QnAListPage() {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {loading ? (
+              {isLoading ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center text-gray-500">
                     로딩 중...
                   </td>
                 </tr>
-              ) : qnaList.length === 0 ? (
+              ) : qnas.length === 0 ? (
                 <tr>
                   <td colSpan={6} className="px-6 py-12 text-center text-gray-500">
                     문의가 없습니다.
                   </td>
                 </tr>
               ) : (
-                qnaList.map((item) => (
+                qnas.map((item) => (
                   <tr key={item._id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       #{item._id}

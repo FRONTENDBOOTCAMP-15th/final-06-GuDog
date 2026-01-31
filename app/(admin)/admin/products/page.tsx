@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { Package, AlertTriangle, XCircle, Pencil } from "lucide-react";
 import { getProducts } from "@/lib/product";
 import { Product } from "@/types/product";
@@ -9,13 +9,15 @@ import StatCard from "@/app/(admin)/admin/_components/StatCard";
 import SearchFilter from "@/app/(admin)/admin/_components/SearchFilter";
 import Pagination from "@/app/(admin)/admin/_components/Pagination";
 import { useQuery } from "@tanstack/react-query";
+import { useUrlParams } from "@/hooks/useUrlParams";
 
 export default function ProductListPage() {
   const searchParams = useSearchParams();
-  const router = useRouter();
 
+  // 검색 입력 상태
   const [searchInput, setSearchInput] = useState(searchParams.get("keyword") || "");
 
+  // URL 파라미터에서 현재 값 읽기
   const keyword = searchParams.get("keyword") || "";
   const category = searchParams.get("category") || "all";
   const page = Number(searchParams.get("page")) || 1;
@@ -23,7 +25,7 @@ export default function ProductListPage() {
 
   // 상품 목록 조회
   const { data: resProducts, isLoading } = useQuery({
-    queryKey: ["products", keyword, category, page, sort],
+    queryKey: ["admin", "products", keyword, category, page, sort],
     queryFn: () =>
       getProducts({
         keyword: keyword || undefined,
@@ -59,20 +61,9 @@ export default function ProductListPage() {
       }
     : { total: 0, lowStock: 0, outOfStock: 0 };
 
-  const updateParams = (updates: Record<string, string>) => {
-    const params = new URLSearchParams(searchParams.toString());
+  const { updateParams, getParam } = useUrlParams();
 
-    Object.entries(updates).forEach(([key, value]) => {
-      if (value) {
-        params.set(key, value);
-      } else {
-        params.delete(key);
-      }
-    });
-
-    router.push(`?${params.toString()}`);
-  };
-
+  // 검색 핸들러
   const handleSearch = () => {
     updateParams({ keyword: searchInput, page: "1" });
   };
@@ -83,22 +74,27 @@ export default function ProductListPage() {
     }
   };
 
+  // 상태 필터 변경 핸들러
   const handleCategoryChange = (value: string) => {
     updateParams({ category: value === "all" ? "" : value, page: "1" });
   };
 
+  // 페이지 변경 핸들러
   const handlePageChange = (newPage: number) => {
     updateParams({ page: String(newPage) });
   };
 
+  // 조회 순서 핸들러
   const handleSortChange = (value: string) => {
     updateParams({ sort: value, page: "1" });
   };
 
+  // 날짜 포맷
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("ko-KR");
   };
 
+  // 필터 옵션
   const filterOptions = [
     { value: "all", label: "전체 카테고리" },
     { value: "사료", label: "사료" },
