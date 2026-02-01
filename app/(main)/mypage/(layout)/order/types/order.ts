@@ -16,6 +16,7 @@ export interface OrderProduct {
 
   size?: string | null;
   color?: string | null;
+  period: string;
 }
 
 export interface Order {
@@ -34,6 +35,7 @@ export interface Order {
   };
   createdAt: string;
   updatedAt: string;
+  period: string;
 }
 
 export interface OrderListRes {

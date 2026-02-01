@@ -44,34 +44,44 @@ export default async function Orders({ searchParams }: Props) {
 
       <div className="max-w-[1280px] mx-auto pt-[57px] pb-[100px] px-[20px] lg:px-0">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-[20px] lg:gap-7 justify-items-center">
-          {flattenedItems.map((item: FlattenedOrderProduct, index: number) => (
-            <MyItemList
-              key={`${item.orderId}-${item._id}-${index}`}
-              orderId={String(item.orderId)}
-              title={item.name}
-              image={
-                <div className="rounded-3xl overflow-hidden w-[211px] h-[211px] relative">
-                  {item.image?.path ? (
-                    <Image
-                      src={item.image.path}
-                      alt={item.name}
-                      width={211}
-                      height={211}
-                      className="object-cover"
-                    />
-                  ) : (
-                    <Product404 />
-                  )}
-                </div>
-              }
-              content="리뷰 작성"
-              date={item.displayDate}
-              period={item.extra?.period || "단회성 구매"}
-              quantity={item.quantity}
-              price={`${item.price.toLocaleString()}원`}
-              mark={<Pencil />}
-            />
-          ))}
+          {/* 데이터 유무에 따른 조건부 렌더링 추가 */}
+          {flattenedItems.length > 0 ? (
+            flattenedItems.map((item: FlattenedOrderProduct, index: number) => (
+              <MyItemList
+                key={`${item.orderId}-${item._id}-${index}`}
+                orderId={String(item.orderId)}
+                title={item.name}
+                image={
+                  <div className="rounded-3xl overflow-hidden w-[211px] h-[211px] relative">
+                    {item.image?.path ? (
+                      <Image
+                        src={item.image.path}
+                        alt={item.name}
+                        width={211}
+                        height={211}
+                        className="object-cover"
+                      />
+                    ) : (
+                      <Product404 />
+                    )}
+                  </div>
+                }
+                content="리뷰 작성"
+                date={item.displayDate}
+                period={item.period || "1회 구매"}
+                quantity={item.quantity}
+                price={`${item.price.toLocaleString()}원`}
+                mark={<Pencil />}
+              />
+            ))
+          ) : (
+            /* 데이터가 없을 때 표시할 메시지 */
+            <div className="col-span-full py-20 text-center">
+              <p className="text-[#909094] text-[18px] font-medium">
+                현재 이용 중인 주문 내역이 없습니다.
+              </p>
+            </div>
+          )}
         </div>
       </div>
       <PaginationWrapper currentPage={currentPage} totalPages={totalPages} />
