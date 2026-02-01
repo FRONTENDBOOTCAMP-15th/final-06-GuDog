@@ -1,11 +1,10 @@
 import { Product, ProductExtra, ProductImage } from "@/types/product";
 
-// 주문 내에 포함된 상품의 구조 (API 응답 기반)
 export interface OrderProduct {
   _id: number;
   seller_id: number;
   name: string;
-  image: ProductImage; // 배열이 아닌 단일 객체로 들어옴
+  image: ProductImage;
   price: number;
   quantity: number;
   extra?: ProductExtra;
@@ -14,7 +13,7 @@ export interface OrderProduct {
     name: string;
     image: string;
   };
-  // API 응답에 따라 추가될 수 있는 필드
+
   size?: string | null;
   color?: string | null;
 }
@@ -22,7 +21,7 @@ export interface OrderProduct {
 export interface Order {
   _id: number;
   user_id: number;
-  products: OrderProduct[]; // 주문 상품 목록
+  products: OrderProduct[];
   state: string;
   cost: {
     products: number;
@@ -33,7 +32,7 @@ export interface Order {
     };
     total: number;
   };
-  createdAt: string; // "2026.02.01 18:29:01"
+  createdAt: string;
   updatedAt: string;
 }
 
