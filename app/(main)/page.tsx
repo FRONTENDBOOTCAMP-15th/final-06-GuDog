@@ -45,46 +45,19 @@ export default async function Home() {
           />
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-100 lg:max-w-300 mx-auto">
             <FeatureCard
-              icon={
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2.5"
-                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                  />
-                </svg>
-              }
+              icon={<Image src="/icons/feature-edit.svg" alt="" width={24} height={24} />}
               title="반려견 정보 입력"
               description="반려견의 정보를 안내에 따라 입력합니다."
             />
             <FeatureCard
-              icon={
-                <svg className="w-6 h-6" fill="none" stroke="#3B82F6" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2.5"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                  />
-                </svg>
-              }
+              icon={<Image src="/icons/feature-chart.svg" alt="" width={24} height={24} />}
               iconBgColor="#EFF6FF"
               title="AI 건강 분석"
               description="매일의 활동 데이터를 기반으로 최적의 칼로리를 제안합니다."
               bgColor="bg-[#fff]"
             />
             <FeatureCard
-              icon={
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2.5"
-                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-              }
+              icon={<Image src="/icons/feature-clock.svg" alt="" width={24} height={24} />}
               title="정기 배송 관리"
               description="아이가 먹는 속도에 맞춰 배송 주기를 자동 조절합니다."
             />
