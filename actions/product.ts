@@ -15,21 +15,12 @@ import {
   HealthBenefit,
   SpecialFeature,
   LineTag,
+  ProductInfoRes,
+  ErrorRes,
 } from "@/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || "";
-
-interface ProductResponse {
-  ok: 1;
-  item: Product;
-}
-
-interface ProductErrorResponse {
-  ok: 0;
-  message: string;
-  errors?: Record<string, { msg: string }>;
-}
 
 // ProductForm에서 사용하는 폼 상태 타입
 export interface ProductFormState {
@@ -137,17 +128,17 @@ export async function createProduct(
     body: JSON.stringify(payload),
   });
 
-  const data: ProductResponse | ProductErrorResponse = await res.json();
+  const data: ProductInfoRes | ErrorRes = await res.json();
 
   if (!res.ok || data.ok !== 1) {
-    const errData = data as ProductErrorResponse;
+    const errData = data as ErrorRes;
     const errorMsg = errData.errors
       ? Object.values(errData.errors)[0].msg
       : errData.message || "상품 등록에 실패했습니다.";
     throw new Error(errorMsg);
   }
 
-  return (data as ProductResponse).item;
+  return (data as ProductInfoRes).item;
 }
 
 /**
@@ -189,15 +180,15 @@ export async function updateProduct(
     body: JSON.stringify(payload),
   });
 
-  const data: ProductResponse | ProductErrorResponse = await res.json();
+  const data: ProductInfoRes | ErrorRes = await res.json();
 
   if (!res.ok || data.ok !== 1) {
-    const errData = data as ProductErrorResponse;
+    const errData = data as ErrorRes;
     const errorMsg = errData.errors
       ? Object.values(errData.errors)[0].msg
       : errData.message || "상품 수정에 실패했습니다.";
     throw new Error(errorMsg);
   }
 
-  return (data as ProductResponse).item;
+  return (data as ProductInfoRes).item;
 }

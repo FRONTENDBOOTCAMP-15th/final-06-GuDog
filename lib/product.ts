@@ -123,7 +123,7 @@ export async function getProduct(_id: number): Promise<ResData<ProductInfoRes>> 
  * 특정 code 배열로 해당 상품들만 조회
  * @param codes - 조회할 상품 code 배열
  */
-export async function getProductsByCodes(codes: string[]) {
+export async function getProductsByCodes(codes: string[]): Promise<ResData<ProductListRes>> {
   try {
     const customQuery = JSON.stringify({
       "extra.code": { $in: codes },
@@ -139,17 +139,10 @@ export async function getProductsByCodes(codes: string[]) {
       },
     });
 
-    const data = await response.json();
-
-    if (!response.ok) {
-      console.error("API 에러:", data);
-      throw new Error("상품 조회 실패");
-    }
-
-    return { ok: true, item: data.item };
+    return response.json();
   } catch (error) {
     console.error("getProductsByCodes 에러:", error);
-    return { ok: false, item: null };
+    return { ok: 0, message: "상품 조회 실패" };
   }
 }
 
