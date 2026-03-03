@@ -1,6 +1,6 @@
 "use server";
 
-import { ErrorRes, Order } from "@/types";
+import { ErrorRes, OrderInfoRes } from "@/types";
 
 // 요청 시 보낼 상품 데이터 타입
 export interface OrderRequestProduct {
@@ -10,19 +10,13 @@ export interface OrderRequestProduct {
   color?: string;
 }
 
-// 주문 성공 시 전체 응답 구조 정의
-interface OrderSuccessRes {
-  ok: 1;
-  item: Order;
-}
-
 /**
  * 주문 생성 API 호출 (POST /orders)
  */
 export async function createOrder(
   products: OrderRequestProduct[],
   accessToken: string
-): Promise<OrderSuccessRes | ErrorRes> {
+): Promise<OrderInfoRes | ErrorRes> {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || "";
 
@@ -37,7 +31,7 @@ export async function createOrder(
       body: JSON.stringify({ products }),
     });
 
-    const data = (await response.json()) as OrderSuccessRes | ErrorRes;
+    const data = (await response.json()) as OrderInfoRes | ErrorRes;
 
     if (response.ok && data.ok === 1) {
       return data; // result.item = Order 타입

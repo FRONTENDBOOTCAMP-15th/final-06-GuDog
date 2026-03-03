@@ -1,5 +1,5 @@
 import useUserStore from "@/zustand/useStore";
-import { ProductImage } from "@/types";
+import { ProductImage, ErrorRes } from "@/types";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || "";
@@ -7,11 +7,6 @@ const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || "";
 interface UploadResponse {
   ok: 1;
   item: ProductImage[];
-}
-
-interface UploadErrorResponse {
-  ok: 0;
-  message: string;
 }
 
 /**
@@ -37,10 +32,10 @@ export async function uploadFiles(files: File[]): Promise<ProductImage[]> {
     body: formData,
   });
 
-  const data: UploadResponse | UploadErrorResponse = await res.json();
+  const data: UploadResponse | ErrorRes = await res.json();
 
   if (!res.ok || data.ok !== 1) {
-    throw new Error((data as UploadErrorResponse).message || "파일 업로드에 실패했습니다.");
+    throw new Error((data as ErrorRes).message || "파일 업로드에 실패했습니다.");
   }
 
   return (data as UploadResponse).item;

@@ -224,10 +224,3 @@ export interface OrderStatisticsRes {
   ok: 1;
   item: OrderStatistics[];
 }
-
-export interface Pagination {
-  page: number;
-  limit: number;
-  total: number;
-  totalPages: number;
-}

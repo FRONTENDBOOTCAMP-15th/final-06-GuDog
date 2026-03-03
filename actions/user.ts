@@ -1,38 +1,7 @@
 "use server";
 
-import { UserInfoRes } from "../types/response";
+import { UserInfoRes, ErrorRes, User } from "@/types";
 import { cookies } from "next/headers";
-import { User } from "@/types";
-
-// interface User {
-//   _id: number;
-//   email: string;
-//   name: string;
-//   phone: string;
-//   address: string;
-//   type: string;
-//   loginType: string;
-//   image?: string;
-//   token?: {
-//     accessToken: string;
-//     refreshToken: string;
-//   };
-// }
-
-interface ServerValidationError {
-  type: string;
-  value: string;
-  msg: string;
-  location: string;
-}
-
-interface ErrorRes {
-  ok: 0;
-  message: string;
-  errors?: {
-    [fieldName: string]: ServerValidationError;
-  };
-}
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID || "";
