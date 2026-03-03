@@ -3,8 +3,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import ProfileClient from "@/actions/profile";
-import { getUser } from "@/lib";
-import { getUserIdFromToken } from "@/lib/auth";
+import { getAuthenticatedUser } from "@/lib/auth";
 
 export const metadata: Metadata = {
   title: "회원 정보",
@@ -17,18 +16,7 @@ export default async function ProfilePage() {
 
   if (!token) redirect("/login");
 
-  // 토큰 전용 유틸리티 함수 사용
-  const userId = getUserIdFromToken(token);
-  if (!userId) redirect("/login");
-
-  // .catch()로 try/catch 없이 const로 할당
-  const res = await getUser(Number(userId)).catch((err) => {
-    console.error("데이터 로드 중 에러:", err);
-    return null;
-  });
-
-  const userData = res && "item" in res ? res.item : null;
-
+  const userData = await getAuthenticatedUser(token);
   if (!userData) {
     return (
       <main className="flex flex-col items-center pt-20">

@@ -1,3 +1,5 @@
+import { getUser } from "@/lib";
+
 interface JwtPayload {
   _id?: string;
   id?: string;
@@ -17,6 +19,19 @@ export function getUserIdFromToken(token: string): string | null {
     return payload._id || payload.id || null;
   } catch (error) {
     console.error("토큰 파싱 실패:", error);
+    return null;
+  }
+}
+
+export async function getAuthenticatedUser(token: string) {
+  const userId = getUserIdFromToken(token);
+  if (!userId) return null;
+
+  try {
+    const res = await getUser(Number(userId));
+    return "item" in res ? res.item : null;
+  } catch (error) {
+    console.error("User Fetch Error:", error);
     return null;
   }
 }
