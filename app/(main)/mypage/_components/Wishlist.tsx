@@ -6,7 +6,7 @@ import { TrashIcon } from "@/app/(main)/mypage/_components/Icons";
 import Image from "next/image";
 import { deleteWishlist, showDeleteConfirm, showError } from "@/lib";
 import { useRouter } from "next/navigation";
-import { ProductCardSkeleton } from "@/app/(main)/mypage/(layout)/wishlist/Skeleton";
+import { ProductCardSkeleton } from "@/app/(main)/mypage/wishlist/Skeleton";
 import { Product404 } from "@/app/(main)/mypage/_components/DogFoodImage";
 
 interface WishlistComponentProps {

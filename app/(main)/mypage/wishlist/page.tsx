@@ -1,4 +1,4 @@
-import { ProductCardSkeleton } from "@/app/(main)/mypage/(layout)/wishlist/Skeleton";
+import { ProductCardSkeleton } from "@/app/(main)/mypage/wishlist/Skeleton";
 import { Product404 } from "@/app/(main)/mypage/_components/DogFoodImage";
 import WishlistComponent from "@/app/(main)/mypage/_components/Wishlist";
 import PaginationWrapper from "@/components/common/PaginationWrapper";

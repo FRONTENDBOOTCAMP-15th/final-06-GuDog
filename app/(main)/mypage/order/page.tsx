@@ -13,7 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import useUserStore from "@/zustand/useStore";
 import { useEffect } from "react";
 import { OrderListRes, ResData } from "@/types";
-import { MyItemListSkeleton } from "@/app/(main)/mypage/(layout)/order/Skeleton";
+import { MyItemListSkeleton } from "@/app/(main)/mypage/order/Skeleton";
 
 export default function Orders() {
   const user = useUserStore((state) => state.user);

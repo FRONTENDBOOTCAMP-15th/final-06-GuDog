@@ -10,7 +10,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { getOrders } from "@/lib";
 import Cookies from "js-cookie";
-import { MyItemListSkeleton } from "@/app/(main)/mypage/(layout)/order/Skeleton";
+import { MyItemListSkeleton } from "@/app/(main)/mypage/order/Skeleton";
 
 export default function Subscription() {
   const user = useUserStore((state) => state.user);
