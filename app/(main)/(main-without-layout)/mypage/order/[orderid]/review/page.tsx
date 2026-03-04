@@ -13,7 +13,7 @@ import { useState } from "react";
 import {
   uploadFile,
   createReview,
-} from "@/app/(main)/mypage/(no-layout)/order/[orderid]/review/PostReview";
+} from "@/app/(main)/(main-without-layout)/mypage/order/[orderid]/review/PostReview";
 import MyReviewList from "@/app/(main)/mypage/_components/ReviewItem";
 import { getOrders, showWarning, showSuccess, showError } from "@/lib";
 import useUserStore from "@/zustand/useStore";

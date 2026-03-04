@@ -6,7 +6,7 @@ import Button from "@/components/common/Button";
 import Input from "@/components/common/Input";
 import { CameraIcon } from "@/app/(main)/mypage/_components/Icons";
 import { updateUser, showError, showSuccess } from "@/lib";
-import { uploadFile } from "@/app/(main)/mypage/(no-layout)/order/[orderid]/review/PostReview";
+import { uploadFile } from "@/app/(main)/(main-without-layout)/mypage/order/[orderid]/review/PostReview";
 import { UserInfoRes } from "@/types";
 import Image from "next/image";
 

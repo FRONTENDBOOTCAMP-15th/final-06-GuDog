@@ -12,7 +12,7 @@ import Button from "@/components/common/Button";
 import DetailSub from "@/app/(main)/mypage/_components/DetailSub";
 import DeliveryPeri from "@/app/(main)/mypage/_components/DeliveryPeri";
 import Adjustdelivery from "@/app/(main)/mypage/_components/AdjustDelivery";
-import { updateSubscriptionPlan } from "@/app/(main)/mypage/(no-layout)/subscription/[subscriptionId]/EditSub";
+import { updateSubscriptionPlan } from "@/app/(main)/(main-without-layout)/mypage/subscription/[subscriptionId]/EditSub";
 import { showSuccess, showError } from "@/lib";
 
 interface Props {
